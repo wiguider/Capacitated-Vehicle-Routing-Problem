@@ -17,13 +17,14 @@ class RandomMap:
         """
         for i in range(0, int(self._instance.routes_count)):
             route = Route()
+            route.set_index(i)
             route.add_node(self._instance.nodes_list[0])
             route.max_linehaul_capacity = self._vehicle_capacity
             route.max_backhaul_capacity = self._vehicle_capacity
             for x in self._instance.rnd_nodes_ids:
                 node = self._instance.get_node_by_index(x)
                 if len(self._instance.linehaul_ids) > 0:
-                    if node.get_type == 'linehaul' and node.get_index in self._instance.linehaul_ids and node.get_capacity < self._vehicle_capacity:
+                    if node.get_type == 'linehaul' and node.get_index in self._instance.linehaul_ids and node.get_capacity <= self._vehicle_capacity:
                         route.add_node(node)
                         self._instance.linehaul_ids.pop(self._instance.linehaul_ids.index(x))
                         self._routes.append(route)
@@ -38,7 +39,7 @@ class RandomMap:
             for x in self._instance.rnd_nodes_ids:
                 node = self._instance.get_node_by_index(x)
                 if len(self._instance.linehaul_ids) > 0:
-                    if node.get_type == 'linehaul' and node.get_index in self._instance.linehaul_ids and node.get_capacity < route.max_linehaul_capacity:
+                    if node.get_type == 'linehaul' and node.get_index in self._instance.linehaul_ids and node.get_capacity <= route.max_linehaul_capacity:
                         route.add_node(node)
                         self._instance.linehaul_ids.pop(self._instance.linehaul_ids.index(x))
 
@@ -50,7 +51,7 @@ class RandomMap:
             for x in self._instance.rnd_nodes_ids:
                 node = self._instance.get_node_by_index(x)
                 if len(self._instance.backhaul_ids) > 0:
-                    if node.get_type == 'backhaul' and node.get_index in self._instance.backhaul_ids and node.get_capacity < route.max_backhaul_capacity:
+                    if node.get_type == 'backhaul' and node.get_index in self._instance.backhaul_ids and node.get_capacity <= route.max_backhaul_capacity:
                         route.add_node(node)
                         self._instance.backhaul_ids.pop(self._instance.backhaul_ids.index(x))
         if len(self._instance.backhaul_ids) > 0:
