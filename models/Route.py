@@ -21,12 +21,10 @@ class Route:
         :param node: models.Node
         :return: None
         """
+        assert isinstance(node, Node)
         if len(self._nodes) > 0:
             self.check_node(node)
         self._nodes.append(node)
-
-    # TODO: Relocate element in another route,
-    # TODO: Exchange elements at positions (i,j) in route, Exchange elements in different routes
 
     def check_node(self, node):
         """
@@ -35,6 +33,7 @@ class Route:
         :param node: models.Node
         :return: None
         """
+        assert isinstance(node, Node)
         if node.get_type == 'linehaul':
             self._delivery_load += node.get_capacity
             self.max_linehaul_capacity = self.max_linehaul_capacity - node.get_capacity
@@ -91,6 +90,7 @@ class Route:
         :param position:
         :return:
         """
+        assert isinstance(position, int)
         node = self._nodes[position]
         assert isinstance(node, Node)
         self._nodes.pop(position)
