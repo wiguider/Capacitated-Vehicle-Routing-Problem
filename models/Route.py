@@ -145,8 +145,8 @@ class Route:
 
     def __repr__(self):
         return "\n{ " \
-               "\nindex: " + str(self.get_index) + \
-               "\nnodes: " + str(self.get_nodes) + \
-               "\nmax_linehaul_capacity: " + str(self.max_linehaul_capacity) + \
-               "\nmax_backhaul_capacity: " + str(self.max_backhaul_capacity) + \
+               "\nindex: " + str(self.get_index) + ", " + \
+               "\nnodes: " + str(self.get_nodes) + ", " + \
+               "\nmax_linehaul_capacity: " + str(self.max_linehaul_capacity) + ", " + \
+               "\nmax_backhaul_capacity: " + str(self.max_backhaul_capacity) + ", " + \
                "\ncost: " + str(self.get_cost) + "}"

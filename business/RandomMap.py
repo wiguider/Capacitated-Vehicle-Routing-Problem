@@ -66,3 +66,8 @@ class RandomMap:
     @property
     def get_routes(self):
         return self._routes
+
+    def __repr__(self):
+        return "\n{ " \
+               "\nroutes: " + str(self.get_routes) + ", " +\
+               "\ntotal_cost: " + str(self.cost) + "}"
