@@ -62,6 +62,8 @@ class Route:
         :param position:
         :return:
         """
+
+        is_valid = False
         assert isinstance(position, int)
         assert isinstance(node, Node)
         last_node = self._nodes[position - 1]
@@ -72,7 +74,7 @@ class Route:
                     self._nodes.insert(position, node)
                     self._delivery_load += node.get_capacity
                     self.max_linehaul_capacity = self.max_linehaul_capacity - node.get_capacity
-
+                    is_valid = True
         else:
             next_node = self._nodes[position + 1]
             assert isinstance(next_node, Node)
@@ -81,8 +83,9 @@ class Route:
                     self._nodes.insert(position, node)
                     self._pickup_load += node.get_capacity
                     self.max_backhaul_capacity = self.max_backhaul_capacity - node.get_capacity
-
+                    is_valid = True
         self.update_cost()
+        return is_valid
 
     def delete_node_at_position(self, position):
         """
@@ -142,6 +145,11 @@ class Route:
             node = self._nodes[i]
             cost += DistanceCalculator.euclidean_distance(last_node.get_coords, node.get_coords)
         self._cost = cost
+
+    def exchange_elements_in_route(self, old_index, new_index):
+        if len(self.get_nodes) > 2:
+            self.get_nodes.insert(new_index, self.get_nodes.pop(old_index))
+        return self.get_nodes
 
     def __repr__(self):
         return "\n{ " \
