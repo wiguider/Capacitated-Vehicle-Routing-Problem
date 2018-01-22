@@ -11,34 +11,35 @@ class RandomMap:
         self.cost = 0.0
 
     def init_routes(self):
+        """
+        Adds the deposit and a first linehaul node to each route
+        :return:
+        """
         for i in range(0, int(self._instance.routes_count)):
             route = Route()
             route.add_node(self._instance.nodes_list[0])
-
+            route.max_linehaul_capacity = self._vehicle_capacity
+            route.max_backhaul_capacity = self._vehicle_capacity
             for x in self._instance.rnd_nodes_ids:
                 node = self._instance.get_node_by_index(x)
                 if len(self._instance.linehaul_ids) > 0:
                     if node.get_type == 'linehaul' and node.get_index in self._instance.linehaul_ids and node.get_capacity < self._vehicle_capacity:
                         route.add_node(node)
-                        route.max_capacity = self._vehicle_capacity - node.get_capacity
-
                         self._instance.linehaul_ids.pop(self._instance.linehaul_ids.index(x))
                         self._routes.append(route)
                         break
 
     def reset_routes_capacities(self):
         for route in self._routes:
-            route.max_capacity = self._vehicle_capacity
+            route.max_backhaul_capacity = self._vehicle_capacity
 
     def populate_routes_linehauls(self):
         for route in self._routes:
             for x in self._instance.rnd_nodes_ids:
                 node = self._instance.get_node_by_index(x)
                 if len(self._instance.linehaul_ids) > 0:
-                    if node.get_type == 'linehaul' and node.get_index in self._instance.linehaul_ids and node.get_capacity < route.max_capacity:
+                    if node.get_type == 'linehaul' and node.get_index in self._instance.linehaul_ids and node.get_capacity < route.max_linehaul_capacity:
                         route.add_node(node)
-                        route.max_capacity = route.max_capacity - node.get_capacity
-
                         self._instance.linehaul_ids.pop(self._instance.linehaul_ids.index(x))
 
         if len(self._instance.linehaul_ids) > 0:
@@ -49,10 +50,8 @@ class RandomMap:
             for x in self._instance.rnd_nodes_ids:
                 node = self._instance.get_node_by_index(x)
                 if len(self._instance.backhaul_ids) > 0:
-                    if node.get_type == 'backhaul' and node.get_index in self._instance.backhaul_ids and node.get_capacity < route.max_capacity:
+                    if node.get_type == 'backhaul' and node.get_index in self._instance.backhaul_ids and node.get_capacity < route.max_backhaul_capacity:
                         route.add_node(node)
-                        route.max_capacity = route.max_capacity - node.get_capacity
-
                         self._instance.backhaul_ids.pop(self._instance.backhaul_ids.index(x))
         if len(self._instance.backhaul_ids) > 0:
             self.populate_routes_backhauls()

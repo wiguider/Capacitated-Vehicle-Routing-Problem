@@ -9,8 +9,12 @@ class Route:
 
         self._delivery_load = 0  # Delivery load
         self._pickup_load = 0  # Pickup load
-
+        # max_capacity is deprecated now we are using max_linehaul_capacity and max_backhaul_capacity
         self.max_capacity = 0
+        # Update: it's better to separate max capacities
+        # instead of resetting one variable because it will be useful when updating routes
+        self.max_linehaul_capacity = 0
+        self.max_backhaul_capacity = 0
 
     def add_node(self, node):
         """
@@ -22,7 +26,7 @@ class Route:
             self.check_node(node)
         self._nodes.append(node)
 
-    # TODO: Add node at position, Relocate element in another route,
+    # TODO: Relocate element in another route,
     # TODO: Exchange elements at positions (i,j) in route, Exchange elements in different routes
 
     def check_node(self, node):
@@ -34,8 +38,11 @@ class Route:
         """
         if node.get_type == 'linehaul':
             self._delivery_load += node.get_capacity
+            self.max_linehaul_capacity = self.max_linehaul_capacity - node.get_capacity
         elif node.get_type == 'backhaul':
             self._pickup_load += node.get_capacity
+            self.max_backhaul_capacity = self.max_backhaul_capacity - node.get_capacity
+
         last_node = self._nodes[-1]
         assert isinstance(last_node, Node)
         self._cost += DistanceCalculator.euclidean_distance(last_node.get_coords(), node.get_coords())
@@ -47,11 +54,43 @@ class Route:
         self._cost += DistanceCalculator.euclidean_distance(last_node.get_coords(), node.get_coords())
 
     def add_node_at_position(self, node, position):
-        # TODO: Check linehaul/backhaul condition
-        self._nodes.insert(position, node)
+        # TODO: Check capacity condition
+        assert isinstance(position, int)
+        assert isinstance(node, Node)
+        last_node = self._nodes[position - 1]
+        assert isinstance(last_node, Node)
+        if node.get_type == 'linehaul':
+            if last_node.get_type == 'linehaul':
+                # TODO: Update cost
+                self._nodes.insert(position, node)
+                self._delivery_load += node.get_capacity
+                self.max_linehaul_capacity = self.max_linehaul_capacity - node.get_capacity
+        else:
+            next_node = self._nodes[position + 1]
+            assert isinstance(next_node, Node)
+            if next_node.get_type == 'backhaul' or next_node.get_type == 'deposit':
+                # TODO: Update cost
+                self._nodes.insert(position, node)
+                self._pickup_load += node.get_capacity
+                self.max_backhaul_capacity = self.max_backhaul_capacity - node.get_capacity
 
     def delete_node_at_position(self, position):
+        """
+        Deletes a node at the given position and updates the capacities
+        :param position:
+        :return:
+        """
+        node = self._nodes[position]
+        assert isinstance(node, Node)
         self._nodes.pop(position)
+        if node.get_type == 'linehaul':
+            self._delivery_load -= node.get_capacity
+            self.max_linehaul_capacity = self.max_linehaul_capacity + node.get_capacity
+
+        elif node.get_type == 'backhaul':
+            self._pickup_load -= node.get_capacity
+            self.max_backhaul_capacity = self.max_backhaul_capacity + node.get_capacity
+        # TODO: Update cost
 
     @property
     def get_nodes(self):
@@ -70,5 +109,6 @@ class Route:
         return self._pickup_load
 
     def __repr__(self):
-        return "\n{nodes: " + str(self.get_nodes) + "\nmax_capacity: " + str(self.max_capacity) + "\ncost: " + str(
-            self.get_cost) + "}"
+        return "\n{nodes: " + str(self.get_nodes) + "\nmax_linehaul_capacity: " + str(self.max_linehaul_capacity) + "\nmax_backhaul_capacity: " + str(
+                self.max_backhaul_capacity) + "\ncost: " + str(
+                self.get_cost) + "}"
