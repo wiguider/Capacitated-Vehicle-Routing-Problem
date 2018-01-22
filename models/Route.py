@@ -22,7 +22,7 @@ class Route:
             self.check_node(node)
         self._nodes.append(node)
 
-    # TODO: Add node at position, Delete node at position, Relocate element in another route,
+    # TODO: Add node at position, Relocate element in another route,
     # TODO: Exchange elements at positions (i,j) in route, Exchange elements in different routes
 
     def check_node(self, node):
@@ -46,6 +46,13 @@ class Route:
         last_node = self._nodes[-1]
         self._cost += DistanceCalculator.euclidean_distance(last_node.get_coords(), node.get_coords())
 
+    def add_node_at_position(self, node, position):
+        # TODO: Check linehaul/backhaul condition
+        self._nodes.insert(position, node)
+
+    def delete_node_at_position(self, position):
+        self._nodes.pop(position)
+
     @property
     def get_nodes(self):
         return self._nodes
@@ -63,4 +70,5 @@ class Route:
         return self._pickup_load
 
     def __repr__(self):
-        return "\n{nodes: " + str(self.get_nodes) + "\nmax_capacity: " + str(self.max_capacity) + "\ncost: " + str(self.get_cost) + "}"
+        return "\n{nodes: " + str(self.get_nodes) + "\nmax_capacity: " + str(self.max_capacity) + "\ncost: " + str(
+            self.get_cost) + "}"
