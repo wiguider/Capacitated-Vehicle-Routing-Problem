@@ -146,10 +146,35 @@ class Route:
             cost += DistanceCalculator.euclidean_distance(last_node.get_coords, node.get_coords)
         self._cost = cost
 
-    def exchange_elements_in_route(self, old_index, new_index):
-        if len(self.get_nodes) > 2:
-            self.get_nodes.insert(new_index, self.get_nodes.pop(old_index))
-        return self.get_nodes
+    def is_route_valid(self):
+        seq = self.get_nodes_seq()
+        match = re.match(r'(L+B*){1}', seq)
+        if hasattr(match, 'groups'):
+            match_groups = match.groups()
+            if len(match_groups[0]) == len(seq):
+                return True and self.checkCapacity()
+        return False
+
+    def checkCapacity(self):
+        lcapacity = 0
+        bcapacity = 0
+        for n in self._nodes:
+            if n.get_type == 'linehaul':
+                lcapacity += n.get_capacity
+            elif n.get_type == 'backhaul':
+                bcapacity += n.get_capacity
+        if self._nodes[0].get_capacity < lcapacity or self._nodes[0].get_capacity < bcapacity:
+            return False
+        return True
+
+    def get_nodes_seq(self):
+        seq = ''
+        for i in range(1, len(self.get_nodes) - 1):
+            if bool(nodes[i].get_type == 'linehaul'):
+                seq += 'L'
+            else:
+                seq += 'B'
+        return seq
 
     def __repr__(self):
         return "\n{ " \

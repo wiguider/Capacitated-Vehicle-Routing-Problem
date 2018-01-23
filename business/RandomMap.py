@@ -3,10 +3,11 @@ from models.Route import Route
 
 
 class RandomMap:
-    def __init__(self, path):
-        self._instance = InstanceModel(path)
-        self._instance.build()
-        self._vehicle_capacity = int(self._instance.max_capacity)
+    def __init__(self, path=None):
+        if path:
+            self._instance = InstanceModel(path)
+            self._instance.build()
+            self._vehicle_capacity = int(self._instance.max_capacity)
         self._routes = []
         self.cost = 0.0
 
@@ -67,7 +68,13 @@ class RandomMap:
     def get_routes(self):
         return self._routes
 
+    def set_routes(self, routes):
+        self._routes = routes
+
+    def set_cost(self, cost):
+        self.cost = cost
+
     def __repr__(self):
         return "\n{ " \
-               "\nroutes: " + str(self.get_routes) + ", " +\
+               "\nroutes: " + str(self.get_routes) + ", " + \
                "\ntotal_cost: " + str(self.cost) + "}"
