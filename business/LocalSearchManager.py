@@ -109,8 +109,6 @@ class LocalSearchManager:
 
     # TODO: Relocate element in the same route,
     # TODO: Relocate element in another route,
-    # TODO: Exchange elements in different routes
-    # TODO: Check linehaul, backhaul, and capacity conditions
 
     def build_map_from_list(self, lista):
         listo = []

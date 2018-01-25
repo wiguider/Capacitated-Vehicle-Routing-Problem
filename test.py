@@ -16,7 +16,7 @@ def get_random_routes(file_path):
 
 
 def get_a1_rm():
-    get_random_routes("Instances/A1.txt")
+    local_search("Instances/A1.txt")
     print rnd_maps_list
 
 
@@ -29,15 +29,15 @@ def get_all_rm():
 def local_search(path):
     ls = LocalSearchManager()
     ls.get_random_routes(path)
-    print '>> ',ls.file_name
+    print '>> ', ls.file_name
     ls.execute('best_exchange')
     print '__________________________'
     ls.execute('first_exchange')
 
 
 def main():
-    # get_a1_rm()
-    get_all_rm()
+    get_a1_rm()
+    # get_all_rm()
     # local_search()
 
 
