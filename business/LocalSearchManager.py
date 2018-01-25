@@ -50,11 +50,11 @@ class LocalSearchManager:
                     if allnodesr[s_index + 1].get_index != 0:
 
                         allnodesr = self.exchange_elements_in_route(allnodesr, s_index, s_index + 1)
-                        # TODO:build map from allnodesr (0, 1, 2, 3, 4, 0, 0, 5, 6, 7, 0) + compute cost
+                        # Build map from allnodesr (0, 1, 2, 3, 4, 0, 0, 5, 6, 7, 0) + compute cost
                         self.build_map_from_list(allnodesr)
                     else:
                         allnodesr = self.exchange_elements_in_route(allnodesr, s_index, s_index + 3)
-                        # TODO:build map from allnodesr (0, 1, 2, 3, 4, 0, 0, 5, 6, 7, 0) + compute cost
+                        # Build map from allnodesr (0, 1, 2, 3, 4, 0, 0, 5, 6, 7, 0) + compute cost
                         self.build_map_from_list(allnodesr)
                     if s == allnodesr[-2]:
                         break
@@ -88,11 +88,11 @@ class LocalSearchManager:
                     if allnodesr[s_index + 1].get_index != 0:
 
                         allnodesr = self.exchange_elements_in_route(allnodesr, s_index, s_index + 1)
-                        # TODO:build map from allnodesr (0, 1, 2, 3, 4, 0, 0, 5, 6, 7, 0) + compute cost
+                        # Build map from allnodesr (0, 1, 2, 3, 4, 0, 0, 5, 6, 7, 0) + compute cost
                         self.build_map_from_list(allnodesr)
                     else:
                         allnodesr = self.exchange_elements_in_route(allnodesr, s_index, s_index + 3)
-                        # TODO:build map from allnodesr (0, 1, 2, 3, 4, 0, 0, 5, 6, 7, 0) + compute cost
+                        # Build map from allnodesr (0, 1, 2, 3, 4, 0, 0, 5, 6, 7, 0) + compute cost
                         self.build_map_from_list(allnodesr)
                     costs = self.cost_map.keys()
                     if costs[-1] < self.last_cost:
