@@ -45,7 +45,7 @@ class Node:
                 self._type) + "]"
 
     def __cmp__(self, other):
-        return int(self._x) == int(other.get_x()) and int(self._y) == int(other.get_y())
+        return int(self._x) == int(other.get_x) and int(self._y) == int(other.get_y)
 
     def __eq__(self, other):
-        return int(self._x) == int(other.get_x()) and int(self._y) == int(other.get_y())
+        return int(self._x) == int(other.get_x) and int(self._y) == int(other.get_y)

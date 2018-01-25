@@ -8,6 +8,7 @@ class RandomMap:
             self._instance = InstanceModel(path)
             self._instance.build()
             self._vehicle_capacity = int(self._instance.max_capacity)
+            self.file_name = self._instance.file_name
         self._routes = []
         self.cost = 0.0
 

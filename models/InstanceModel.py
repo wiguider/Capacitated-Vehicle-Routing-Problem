@@ -7,6 +7,7 @@ from utils.InstanceReader import InstanceReader
 class InstanceModel:
     def __init__(self, path):
         self.path = path
+        self.file_name = path.split('/')[-1]
         self.clients_count = 0
         self.routes_count = 0
         self.rnd_nodes_ids = []

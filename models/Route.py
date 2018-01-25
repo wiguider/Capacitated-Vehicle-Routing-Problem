@@ -1,3 +1,5 @@
+import re
+
 from models.Node import Node
 from utils import DistanceCalculator
 
@@ -152,10 +154,10 @@ class Route:
         if hasattr(match, 'groups'):
             match_groups = match.groups()
             if len(match_groups[0]) == len(seq):
-                return True and self.checkCapacity()
+                return True and self.check_capacity()
         return False
 
-    def checkCapacity(self):
+    def check_capacity(self):
         lcapacity = 0
         bcapacity = 0
         for n in self._nodes:
@@ -165,11 +167,14 @@ class Route:
                 bcapacity += n.get_capacity
         if self._nodes[0].get_capacity < lcapacity or self._nodes[0].get_capacity < bcapacity:
             return False
+        self.max_linehaul_capacity = self._nodes[0].get_capacity - lcapacity
+        self.max_backhaul_capacity = self._nodes[0].get_capacity - bcapacity
         return True
 
     def get_nodes_seq(self):
         seq = ''
-        for i in range(1, len(self.get_nodes) - 1):
+        nodes = self.get_nodes
+        for i in range(1, len(nodes) - 1):
             if bool(nodes[i].get_type == 'linehaul'):
                 seq += 'L'
             else:
