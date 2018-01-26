@@ -17,22 +17,25 @@ def get_random_routes(file_path):
 
 def get_a1_rm():
     local_search("Instances/A1.txt")
-    print rnd_maps_list
 
 
 def get_all_rm():
     instances = sorted(glob.glob("Instances/*.txt"))
     map(lambda instance: local_search(instance), instances)
-    print rnd_maps_list
 
 
 def local_search(path):
     ls = LocalSearchManager()
+    ls1 = LocalSearchManager()
     ls.get_random_routes(path)
+    ls1.get_random_routes(path)
+
     print '>> ', ls.file_name
-    ls.execute('best_exchange')
-    print '__________________________'
-    ls.execute('first_exchange')
+    ls1.execute('best_relocate')
+    print '-----------'
+    ls1.execute('best_exchange')
+    print '-----------'
+    ls1.execute('first_exchange')
 
 
 def main():

@@ -107,6 +107,7 @@ class Route:
             self._pickup_load -= node.get_capacity
             self.max_backhaul_capacity = self.max_backhaul_capacity + node.get_capacity
         self.update_cost()
+        return node
 
     @property
     def get_index(self):
@@ -132,9 +133,15 @@ class Route:
     def get_delivery_load(self):
         return self._delivery_load
 
+    def set_delivery_load(self, delivery_load):
+        self._delivery_load = delivery_load
+
     @property
     def get_pickup_load(self):
         return self._pickup_load
+
+    def set_pickup_load(self, pickup_load):
+        self._pickup_load = pickup_load
 
     def update_cost(self):
         """
@@ -144,8 +151,11 @@ class Route:
         cost = 0
         for i in range(1, len(self._nodes) - 1):
             last_node = self._nodes[i - 1]
+            assert isinstance(last_node, Node)
             node = self._nodes[i]
-            cost += DistanceCalculator.euclidean_distance(last_node.get_coords, node.get_coords)
+            assert isinstance(node, Node)
+
+            cost += DistanceCalculator.euclidean_distance(last_node.get_coords(), node.get_coords())
         self._cost = cost
 
     def is_route_valid(self):
@@ -187,4 +197,6 @@ class Route:
                "\nnodes: " + str(self.get_nodes) + ", " + \
                "\nmax_linehaul_capacity: " + str(self.max_linehaul_capacity) + ", " + \
                "\nmax_backhaul_capacity: " + str(self.max_backhaul_capacity) + ", " + \
+               "\ndelivery_load: " + str(self._delivery_load) + "," + \
+               "\npickup_load: " + str(self._pickup_load) + "," + \
                "\ncost: " + str(self.get_cost) + "}"

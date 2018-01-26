@@ -10,7 +10,7 @@ class LocalSearchManager:
         self.random_map = None
         self.cost_map = {}
         self.file_name = ''
-        self.last_cost = 0.0
+        self.ref_cost = 0.0
 
     def get_random_routes(self, file_path):
         rm = RandomMap(file_path)
@@ -22,15 +22,17 @@ class LocalSearchManager:
         self.random_map = rm
 
     @staticmethod
-    def exchange_elements_in_route(nodes, old_index, new_index):
+    def exchange_elements_in_list(nodes, old_index, new_index):
         if len(nodes) > 2:
             nodes.insert(new_index, nodes.pop(old_index))
         return nodes
 
     def best_exchange(self):
+        print ">> best_exchange"
+        self.cost_map = {}
         rm_instance_ref = copy(self.random_map)
         rm_instance = copy(self.random_map)
-        self.cost_map[rm_instance.cost] = rm_instance
+
         allNodes = []
         allnodesStock = []
         assert isinstance(rm_instance_ref, RandomMap)
@@ -43,29 +45,34 @@ class LocalSearchManager:
 
         allnodesr = copy(allNodes)
         for s in allnodesStock:
+            assert isinstance(s, Node)
             for i in range(0, len(allnodesr) - 1):
-                if allnodesr[i].get_index != 0:
-                    s_index = allnodesr.index(s)
+                if allnodesr[i].get_index != 0:  # if the given node is not a deposit
+                    s_index = allnodesr.index(s)  # The position of the node s in the list of nodes with deposits
 
-                    if allnodesr[s_index + 1].get_index != 0:
+                    if allnodesr[s_index + 1].get_index != 0:  # if the next node is not a deposit
 
-                        allnodesr = self.exchange_elements_in_route(allnodesr, s_index, s_index + 1)
+                        allnodesr = self.exchange_elements_in_list(allnodesr, s_index, s_index + 1)
                         # Build map from allnodesr (0, 1, 2, 3, 4, 0, 0, 5, 6, 7, 0) + compute cost
                         self.build_map_from_list(allnodesr)
-                    else:
-                        allnodesr = self.exchange_elements_in_route(allnodesr, s_index, s_index + 3)
+                    else:  # if the next node is a deposit
+                        allnodesr = self.exchange_elements_in_list(allnodesr, s_index, s_index + 3)
                         # Build map from allnodesr (0, 1, 2, 3, 4, 0, 0, 5, 6, 7, 0) + compute cost
                         self.build_map_from_list(allnodesr)
-                    if s == allnodesr[-2]:
+                    if s.__eq__(allnodesr[-2]):
                         break
-            allnodesr = allNodes
+                allnodesr = copy(allNodes)
         min_cost = min(self.cost_map.keys())
-        print self.cost_map[min_cost]
+        # print self.cost_map[min_cost]
+        print 'Total cost: ', min_cost
         print 'GAP: ', self.calculate_gap(min_cost), '% '
         print 'Served clients: ', len(allnodesStock)
+        print self.cost_map.keys()
+
         return self.cost_map[min_cost]
 
     def first_exchange(self):
+        print ">> first_exchange"
         rm_instance_ref = copy(self.random_map)
         rm_instance = copy(self.random_map)
         allNodes = []
@@ -78,7 +85,7 @@ class LocalSearchManager:
                 allNodes.append(node)
                 if node.get_type != "deposit":
                     allnodesStock.append(node)
-        self.last_cost = rm_instance.cost
+        self.ref_cost = rm_instance.cost
         allnodesr = copy(allNodes)
         for s in allnodesStock:
             for i in range(0, len(allnodesr) - 1):
@@ -87,28 +94,85 @@ class LocalSearchManager:
 
                     if allnodesr[s_index + 1].get_index != 0:
 
-                        allnodesr = self.exchange_elements_in_route(allnodesr, s_index, s_index + 1)
+                        allnodesr = self.exchange_elements_in_list(allnodesr, s_index, s_index + 1)
                         # Build map from allnodesr (0, 1, 2, 3, 4, 0, 0, 5, 6, 7, 0) + compute cost
                         self.build_map_from_list(allnodesr)
                     else:
-                        allnodesr = self.exchange_elements_in_route(allnodesr, s_index, s_index + 3)
+                        allnodesr = self.exchange_elements_in_list(allnodesr, s_index, s_index + 3)
                         # Build map from allnodesr (0, 1, 2, 3, 4, 0, 0, 5, 6, 7, 0) + compute cost
                         self.build_map_from_list(allnodesr)
                     costs = self.cost_map.keys()
-                    if costs[-1] < self.last_cost:
+                    if costs[-1] < self.ref_cost:
+                        print 'Total cost: ', costs[-1]
+                        print 'GAP: ', self.calculate_gap(costs[-1]), '% '
+                        print 'Served clients: ', len(allnodesStock)
+                        print self.cost_map.keys()
                         return self.cost_map[costs[-1]]
 
                     if s == allnodesr[-2]:
                         break
-            allnodesr = allNodes
+                allnodesr = copy(allNodes)
 
-        print rm_instance
-        print 'GAP: ', self.calculate_gap(rm_instance.cost), '% '
+        min_cost = min(self.cost_map.keys())
+        # print self.cost_map[min_cost]
+        print 'Total cost: ', min_cost
+        print 'GAP: ', self.calculate_gap(min_cost), '% '
         print 'Served clients: ', len(allnodesStock)
-        return rm_instance
+        print self.cost_map.keys()
+
+        return self.cost_map[min_cost]
 
     # TODO: Relocate element in the same route,
     # TODO: Relocate element in another route,
+
+    def best_relocate(self):
+        print ">> best_relocate"
+
+        rm_instance_ref = copy(self.random_map)
+        rm_instance = copy(self.random_map)
+        self.cost_map = {}
+        allNodes = []
+        allnodesStock = []
+        assert isinstance(rm_instance_ref, RandomMap)
+        for route in rm_instance_ref.get_routes:
+            for node in route.get_nodes:
+                assert isinstance(node, Node)
+                allNodes.append(node)
+                if node.get_type != "deposit":
+                    allnodesStock.append(node)
+
+        allnodesr = copy(allNodes)
+        for s in allnodesStock:
+            for i in range(0, len(allnodesr) - 1):
+                if allnodesr[i].get_index != 0:
+                    s_index = allnodesr.index(s)
+
+                    if allnodesr[s_index + 1].get_index != 0:
+
+                        allnodesr = self.relocate_element_in_list(allnodesr, s_index, s_index + 1)
+                        # Build map from allnodesr (0, 1, 2, 3, 4, 0, 0, 5, 6, 7, 0) + compute cost
+                        self.build_map_from_list(allnodesr)
+                    else:
+                        allnodesr = self.relocate_element_in_list(allnodesr, s_index, s_index + 2)
+                        # Build map from allnodesr (0, 1, 2, 3, 4, 0, 0, 5, 6, 7, 0) + compute cost
+                        self.build_map_from_list(allnodesr)
+                    if s == allnodesr[-2]:
+                        break
+                # allnodesr = copy(allNodes)
+        min_cost = min(self.cost_map.keys())
+        # print self.cost_map[min_cost]
+        print 'Total cost: ', min_cost
+        print 'GAP: ', self.calculate_gap(min_cost), '% '
+        print 'Served clients: ', len(allnodesStock)
+        print self.cost_map.keys()
+
+        return self.cost_map[min_cost]
+
+    @staticmethod
+    def relocate_element_in_list(lista, old_index, new_index):
+        element = lista.pop(old_index)
+        lista.insert(new_index, element)
+        return lista
 
     def build_map_from_list(self, lista):
         listo = []
@@ -131,6 +195,8 @@ class LocalSearchManager:
             if not route.is_route_valid():
                 return False
 
+            assert isinstance(route, Route)
+            route.update_cost()
             route.set_index(c)
             routes_map.append(route)
             c += 1
@@ -154,7 +220,7 @@ class LocalSearchManager:
             'first_exchange': self.first_exchange,
             'best_exchange': self.best_exchange,
             #           'first_relocate': first_relocate,
-            #          'best_relocate': best_relocate,
+            'best_relocate': self.best_relocate,
         }
         options[method]()
 
