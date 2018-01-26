@@ -46,6 +46,7 @@ class Route:
         last_node = self._nodes[-1]
         assert isinstance(last_node, Node)
         self._cost += DistanceCalculator.euclidean_distance(last_node.get_coords(), node.get_coords())
+        self._cost = round(self._cost, 2)
 
     def add_deposit_at_last(self):
         """
@@ -56,6 +57,7 @@ class Route:
         self._nodes.append(node)
         last_node = self._nodes[-1]
         self._cost += DistanceCalculator.euclidean_distance(last_node.get_coords(), node.get_coords())
+        self._cost = round(self._cost, 2)
 
     def add_node_at_position(self, node, position):
         """
@@ -156,7 +158,7 @@ class Route:
             assert isinstance(node, Node)
 
             cost += DistanceCalculator.euclidean_distance(last_node.get_coords(), node.get_coords())
-        self._cost = cost
+        self._cost = round(cost, 2)
 
     def is_route_valid(self):
         seq = self.get_nodes_seq()

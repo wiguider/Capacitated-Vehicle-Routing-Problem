@@ -1,9 +1,17 @@
 import glob
+import os
 
 from business.LocalSearchManager import LocalSearchManager
 from business.RandomMap import RandomMap
+from utils.FileWriter import FileWriter
 
 rnd_maps_list = []
+
+
+def ensure_dir(file_path):
+    directory = os.path.dirname(file_path)
+    if not os.path.exists(directory):
+        os.makedirs(directory)
 
 
 def get_random_routes(file_path):
@@ -16,7 +24,7 @@ def get_random_routes(file_path):
 
 
 def get_a1_rm():
-    local_search("Instances/A1.txt")
+    local_search("Instances/A2.txt")
 
 
 def get_all_rm():
@@ -31,11 +39,27 @@ def local_search(path):
     ls1.get_random_routes(path)
 
     print '>> ', ls.file_name
-    ls1.execute('best_relocate')
+    name = ls.file_name.split(".")[0]
+
+    ensure_dir("Results/" + name + "/")
+
+    br = ls.execute('best_relocate')
     print '-----------'
-    ls1.execute('best_exchange')
+    fr = ls.execute('first_relocate')
     print '-----------'
-    ls1.execute('first_exchange')
+    be = ls1.execute('best_exchange')
+    print '-----------'
+    fe = ls1.execute('first_exchange')
+
+    fw = FileWriter("Results/" + name + "/first_relocate.txt")
+    fw.write(str(fr))
+    fw = FileWriter("Results/" + name + "/best_relocate.txt")
+    fw.write(str(br))
+
+    fw = FileWriter("Results/" + name + "/first_exchange.txt")
+    fw.write(str(fe))
+    fw = FileWriter("Results/" + name + "/best_exchange.txt")
+    fw.write(str(be))
 
 
 def main():

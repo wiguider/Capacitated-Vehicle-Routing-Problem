@@ -61,13 +61,13 @@ class LocalSearchManager:
                         self.build_map_from_list(allnodesr)
                     if s.__eq__(allnodesr[-2]):
                         break
-                allnodesr = copy(allNodes)
+                    allnodesr = copy(allNodes)
         min_cost = min(self.cost_map.keys())
         # print self.cost_map[min_cost]
         print 'Total cost: ', min_cost
         print 'GAP: ', self.calculate_gap(min_cost), '% '
         print 'Served clients: ', len(allnodesStock)
-        print self.cost_map.keys()
+        print len(self.cost_map.keys())
 
         return self.cost_map[min_cost]
 
@@ -102,28 +102,25 @@ class LocalSearchManager:
                         # Build map from allnodesr (0, 1, 2, 3, 4, 0, 0, 5, 6, 7, 0) + compute cost
                         self.build_map_from_list(allnodesr)
                     costs = self.cost_map.keys()
-                    if costs[-1] < self.ref_cost:
+                    if costs[-1] < rm_instance.cost:
                         print 'Total cost: ', costs[-1]
                         print 'GAP: ', self.calculate_gap(costs[-1]), '% '
                         print 'Served clients: ', len(allnodesStock)
-                        print self.cost_map.keys()
+                        print len(self.cost_map.keys())
                         return self.cost_map[costs[-1]]
 
                     if s == allnodesr[-2]:
                         break
-                allnodesr = copy(allNodes)
+                    allnodesr = copy(allNodes)
 
         min_cost = min(self.cost_map.keys())
         # print self.cost_map[min_cost]
         print 'Total cost: ', min_cost
         print 'GAP: ', self.calculate_gap(min_cost), '% '
         print 'Served clients: ', len(allnodesStock)
-        print self.cost_map.keys()
+        print len(self.cost_map.keys())
 
         return self.cost_map[min_cost]
-
-    # TODO: Relocate element in the same route,
-    # TODO: Relocate element in another route,
 
     def best_relocate(self):
         print ">> best_relocate"
@@ -158,13 +155,65 @@ class LocalSearchManager:
                         self.build_map_from_list(allnodesr)
                     if s == allnodesr[-2]:
                         break
+
                 # allnodesr = copy(allNodes)
         min_cost = min(self.cost_map.keys())
         # print self.cost_map[min_cost]
         print 'Total cost: ', min_cost
         print 'GAP: ', self.calculate_gap(min_cost), '% '
         print 'Served clients: ', len(allnodesStock)
-        print self.cost_map.keys()
+        print len(self.cost_map.keys())
+
+        return self.cost_map[min_cost]
+
+    def first_relocate(self):
+        print ">> first_relocate"
+
+        rm_instance_ref = copy(self.random_map)
+        rm_instance = copy(self.random_map)
+        self.cost_map = {}
+        allNodes = []
+        allnodesStock = []
+        assert isinstance(rm_instance_ref, RandomMap)
+        for route in rm_instance_ref.get_routes:
+            for node in route.get_nodes:
+                assert isinstance(node, Node)
+                allNodes.append(node)
+                if node.get_type != "deposit":
+                    allnodesStock.append(node)
+
+        allnodesr = copy(allNodes)
+        for s in allnodesStock:
+            for i in range(0, len(allnodesr) - 1):
+                if allnodesr[i].get_index != 0:
+                    s_index = allnodesr.index(s)
+
+                    if allnodesr[s_index + 1].get_index != 0:
+
+                        allnodesr = self.relocate_element_in_list(allnodesr, s_index, s_index + 1)
+                        # Build map from allnodesr (0, 1, 2, 3, 4, 0, 0, 5, 6, 7, 0) + compute cost
+                        self.build_map_from_list(allnodesr)
+                    else:
+                        allnodesr = self.relocate_element_in_list(allnodesr, s_index, s_index + 2)
+                        # Build map from allnodesr (0, 1, 2, 3, 4, 0, 0, 5, 6, 7, 0) + compute cost
+                        self.build_map_from_list(allnodesr)
+                    costs = self.cost_map.keys()
+                    if costs[-1] < rm_instance.cost:
+                        print 'Total cost: ', costs[-1]
+                        print 'GAP: ', self.calculate_gap(costs[-1]), '% '
+                        print 'Served clients: ', len(allnodesStock)
+                        print len(self.cost_map.keys())
+                        return self.cost_map[costs[-1]]
+                    allnodesr = copy(allNodes)
+                    if s == allnodesr[-2]:
+                        break
+                # allnodesr = copy(allNodes)
+        min_cost = min(self.cost_map.keys())
+        # print self.cost_map[min_cost]
+        print 'Total cost: ', min_cost
+        print 'GAP: ', self.calculate_gap(min_cost), '% '
+        print 'Served clients: ', len(allnodesStock)
+        print len(self.cost_map.keys())
 
         return self.cost_map[min_cost]
 
@@ -206,6 +255,7 @@ class LocalSearchManager:
         cost = 0
         for route in routes_map:
             cost += route.get_cost
+        cost = round(cost, 2)
 
         rm = RandomMap()
         rm.set_routes(routes_map)
@@ -219,10 +269,10 @@ class LocalSearchManager:
         options = {
             'first_exchange': self.first_exchange,
             'best_exchange': self.best_exchange,
-            #           'first_relocate': first_relocate,
+            'first_relocate': self.first_relocate,
             'best_relocate': self.best_relocate,
         }
-        options[method]()
+        return options[method]()
 
     def get_ref_cost(self):
         f = open('RPA_Solutions/Detailed_Solution_' + self.file_name, "r")
