@@ -4,6 +4,7 @@ import os
 from business.LocalSearchManager import LocalSearchManager
 from business.RandomMap import RandomMap
 from models.Route import Route
+from utils import rounds
 from utils.FileWriter import FileWriter
 
 rnd_maps_list = []
@@ -25,7 +26,7 @@ def get_random_routes(file_path):
 
 
 def get_a1_rm():
-    local_search("Instances/A1.txt")
+    local_search("Instances/N6.txt")
 
 
 def get_all_rm():
@@ -54,7 +55,7 @@ def local_search(path):
     payload['map'] = map
     payload['cost'] = cost
     payload['maxload'] = map.get_routes[0].get_nodes[0].get_capacity
-    payload['gap'] = gap
+    payload['gap'] = rounds(gap)
     payload['num_clients'] = num_clients
     all_routes = map.get_routes
     fw = FileWriter("Results/" + name + "/best_relocate.txt")
@@ -66,7 +67,7 @@ def local_search(path):
     payload['map'] = map
     payload['cost'] = cost
     payload['maxload'] = map.get_routes[0].get_nodes[0].get_capacity
-    payload['gap'] = gap
+    payload['gap'] = rounds(gap)
     payload['num_clients'] = num_clients
     all_routes = map.get_routes
     fw = FileWriter("Results/" + name + "/first_relocate.txt")
@@ -78,7 +79,7 @@ def local_search(path):
     payload['map'] = map
     payload['cost'] = cost
     payload['maxload'] = map.get_routes[0].get_nodes[0].get_capacity
-    payload['gap'] = gap
+    payload['gap'] = rounds(gap)
     payload['num_clients'] = num_clients
     all_routes = map.get_routes
     fw = FileWriter("Results/" + name + "/best_exchange.txt")
@@ -90,7 +91,7 @@ def local_search(path):
     payload['map'] = map
     payload['cost'] = cost
     payload['maxload'] = map.get_routes[0].get_nodes[0].get_capacity
-    payload['gap'] = gap
+    payload['gap'] = rounds(gap)
     payload['num_clients'] = num_clients
     all_routes = map.get_routes
     fw = FileWriter("Results/" + name + "/first_exchange.txt")
@@ -127,8 +128,8 @@ def write_all_routes(writer, all_routes):
 
 
 def main():
-    get_a1_rm()
-    # get_all_rm()
+    # get_a1_rm()
+    get_all_rm()
     # local_search()
 
 

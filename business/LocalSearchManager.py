@@ -64,10 +64,10 @@ class LocalSearchManager:
                     allnodesr = copy(allNodes)
         min_cost = min(self.cost_map.keys())
         # print self.cost_map[min_cost]
-        print 'Total cost: ', min_cost
-        print 'GAP: ', self.calculate_gap(min_cost), '% '
-        print 'Served clients: ', len(allnodesStock)
-        print len(self.cost_map.keys())
+        # print 'Total cost: ', min_cost
+        # print 'GAP: ', self.calculate_gap(min_cost), '% '
+        # print 'Served clients: ', len(allnodesStock)
+        # print len(self.cost_map.keys())
 
         return self.cost_map[min_cost], min_cost, self.calculate_gap(min_cost), len(allnodesStock)
 
@@ -103,10 +103,10 @@ class LocalSearchManager:
                         self.build_map_from_list(allnodesr)
                     costs = self.cost_map.keys()
                     if costs[-1] < rm_instance.cost:
-                        print 'Total cost: ', costs[-1]
-                        print 'GAP: ', self.calculate_gap(costs[-1]), '% '
-                        print 'Served clients: ', len(allnodesStock)
-                        print len(self.cost_map.keys())
+                        # print 'Total cost: ', costs[-1]
+                        # print 'GAP: ', self.calculate_gap(costs[-1]), '% '
+                        # print 'Served clients: ', len(allnodesStock)
+                        # print len(self.cost_map.keys())
                         return self.cost_map[costs[-1]], costs[-1], self.calculate_gap(costs[-1]), len(allnodesStock)
 
                     if s == allnodesr[-2]:
@@ -115,10 +115,10 @@ class LocalSearchManager:
 
         min_cost = min(self.cost_map.keys())
         # print self.cost_map[min_cost]
-        print 'Total cost: ', min_cost
-        print 'GAP: ', self.calculate_gap(min_cost), '% '
-        print 'Served clients: ', len(allnodesStock)
-        print len(self.cost_map.keys())
+        # print 'Total cost: ', min_cost
+        # print 'GAP: ', self.calculate_gap(min_cost), '% '
+        # print 'Served clients: ', len(allnodesStock)
+        # print len(self.cost_map.keys())
 
         return self.cost_map[min_cost], min_cost, self.calculate_gap(min_cost), len(allnodesStock)
 
@@ -159,10 +159,10 @@ class LocalSearchManager:
                 # allnodesr = copy(allNodes)
         min_cost = min(self.cost_map.keys())
         # print self.cost_map[min_cost]
-        print 'Total cost: ', min_cost
-        print 'GAP: ', self.calculate_gap(min_cost), '% '
-        print 'Served clients: ', len(allnodesStock)
-        print len(self.cost_map.keys())
+        # print 'Total cost: ', min_cost
+        # print 'GAP: ', self.calculate_gap(min_cost), '% '
+        # print 'Served clients: ', len(allnodesStock)
+        # print len(self.cost_map.keys())
 
         return self.cost_map[min_cost], min_cost, self.calculate_gap(min_cost), len(allnodesStock)
 
@@ -199,10 +199,10 @@ class LocalSearchManager:
                         self.build_map_from_list(allnodesr)
                     costs = self.cost_map.keys()
                     if costs[-1] < rm_instance.cost:
-                        print 'Total cost: ', costs[-1]
-                        print 'GAP: ', self.calculate_gap(costs[-1]), '% '
-                        print 'Served clients: ', len(allnodesStock)
-                        print len(self.cost_map.keys())
+                        # print 'Total cost: ', costs[-1]
+                        # print 'GAP: ', self.calculate_gap(costs[-1]), '% '
+                        # print 'Served clients: ', len(allnodesStock)
+                        # print len(self.cost_map.keys())
                         return self.cost_map[costs[-1]], costs[-1], self.calculate_gap(costs[-1]), len(allnodesStock)
                     allnodesr = copy(allNodes)
                     if s == allnodesr[-2]:
@@ -210,10 +210,10 @@ class LocalSearchManager:
                 # allnodesr = copy(allNodes)
         min_cost = min(self.cost_map.keys())
         # print self.cost_map[min_cost]
-        print 'Total cost: ', min_cost
-        print 'GAP: ', self.calculate_gap(min_cost), '% '
-        print 'Served clients: ', len(allnodesStock)
-        print len(self.cost_map.keys())
+        # print 'Total cost: ', min_cost
+        # print 'GAP: ', self.calculate_gap(min_cost), '% '
+        # print 'Served clients: ', len(allnodesStock)
+        # print len(self.cost_map.keys())
 
         return self.cost_map[min_cost], min_cost, self.calculate_gap(min_cost), len(allnodesStock)
 

@@ -1,0 +1,51 @@
+PROBLEM DETAILS:
+Customers = 150
+Max Load = 8500
+Max Cost = 99999999999999
+
+SOLUTION DETAILS: 
+Total Cost = 2105491.24
+Routes Of the Solution = 7
+GAP = 46.38 %
+
+ROUTE 0:
+Cost = 537285.75
+Delivery Load = 8493
+Pick-Up Load = 8465
+Customers in Route = 39
+
+ROUTE 1:
+Cost = 425180.49
+Delivery Load = 8392
+Pick-Up Load = 8387
+Customers in Route = 35
+
+ROUTE 2:
+Cost = 411321.66
+Delivery Load = 8414
+Pick-Up Load = 5987
+Customers in Route = 29
+
+ROUTE 3:
+Cost = 189261.64
+Delivery Load = 8471
+Pick-Up Load = 0
+Customers in Route = 16
+
+ROUTE 4:
+Cost = 206839.74
+Delivery Load = 8402
+Pick-Up Load = 0
+Customers in Route = 17
+
+ROUTE 5:
+Cost = 255615.45
+Delivery Load = 8473
+Pick-Up Load = 0
+Customers in Route = 19
+
+ROUTE 6:
+Cost = 79986.51
+Delivery Load = 3455
+Pick-Up Load = 0
+Customers in Route = 9

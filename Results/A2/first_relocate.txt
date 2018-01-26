@@ -1,0 +1,39 @@
+PROBLEM DETAILS:
+Customers = 25
+Max Load = 2550
+Max Cost = 99999999999999
+
+SOLUTION DETAILS: 
+Total Cost = 301777.18
+Routes Of the Solution = 5
+GAP = 6.75 %
+
+ROUTE 0:
+Cost = 99574.1
+Delivery Load = 2525
+Pick-Up Load = 2540
+Customers in Route = 11
+
+ROUTE 1:
+Cost = 59596.7
+Delivery Load = 2464
+Pick-Up Load = 0
+Customers in Route = 7
+
+ROUTE 2:
+Cost = 71335.22
+Delivery Load = 2527
+Pick-Up Load = 0
+Customers in Route = 7
+
+ROUTE 3:
+Cost = 58250.28
+Delivery Load = 2050
+Pick-Up Load = 0
+Customers in Route = 7
+
+ROUTE 4:
+Cost = 13020.88
+Delivery Load = 483
+Pick-Up Load = 0
+Customers in Route = 3
