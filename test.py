@@ -3,6 +3,7 @@ import os
 
 from business.LocalSearchManager import LocalSearchManager
 from business.RandomMap import RandomMap
+from models.Route import Route
 from utils.FileWriter import FileWriter
 
 rnd_maps_list = []
@@ -24,7 +25,7 @@ def get_random_routes(file_path):
 
 
 def get_a1_rm():
-    local_search("Instances/A2.txt")
+    local_search("Instances/A1.txt")
 
 
 def get_all_rm():
@@ -42,24 +43,87 @@ def local_search(path):
     name = ls.file_name.split(".")[0]
 
     ensure_dir("Results/" + name + "/")
+    payload = {'map': None,
+               'cost': 0.0,
+               'gap': 0.0,
+               'maxload': 0.0,
+               'num_clients': 0.0}
+    map, cost, gap, num_clients = ls.execute('best_relocate')
+    assert isinstance(map, RandomMap)
 
-    br = ls.execute('best_relocate')
-    print '-----------'
-    fr = ls.execute('first_relocate')
-    print '-----------'
-    be = ls1.execute('best_exchange')
-    print '-----------'
-    fe = ls1.execute('first_exchange')
-
-    fw = FileWriter("Results/" + name + "/first_relocate.txt")
-    fw.write(str(fr))
+    payload['map'] = map
+    payload['cost'] = cost
+    payload['maxload'] = map.get_routes[0].get_nodes[0].get_capacity
+    payload['gap'] = gap
+    payload['num_clients'] = num_clients
+    all_routes = map.get_routes
     fw = FileWriter("Results/" + name + "/best_relocate.txt")
-    fw.write(str(br))
-
-    fw = FileWriter("Results/" + name + "/first_exchange.txt")
-    fw.write(str(fe))
+    write_problem_details(fw, payload)
+    write_solution_details(fw, payload)
+    write_all_routes(fw, all_routes)
+    print '-----------'
+    map, cost, gap, num_clients = ls.execute('first_relocate')
+    payload['map'] = map
+    payload['cost'] = cost
+    payload['maxload'] = map.get_routes[0].get_nodes[0].get_capacity
+    payload['gap'] = gap
+    payload['num_clients'] = num_clients
+    all_routes = map.get_routes
+    fw = FileWriter("Results/" + name + "/first_relocate.txt")
+    write_problem_details(fw, payload)
+    write_solution_details(fw, payload)
+    write_all_routes(fw, all_routes)
+    print '-----------'
+    map, cost, gap, num_clients = ls1.execute('best_exchange')
+    payload['map'] = map
+    payload['cost'] = cost
+    payload['maxload'] = map.get_routes[0].get_nodes[0].get_capacity
+    payload['gap'] = gap
+    payload['num_clients'] = num_clients
+    all_routes = map.get_routes
     fw = FileWriter("Results/" + name + "/best_exchange.txt")
-    fw.write(str(be))
+    write_problem_details(fw, payload)
+    write_solution_details(fw, payload)
+    write_all_routes(fw, all_routes)
+    print '-----------'
+    map, cost, gap, num_clients = ls1.execute('first_exchange')
+    payload['map'] = map
+    payload['cost'] = cost
+    payload['maxload'] = map.get_routes[0].get_nodes[0].get_capacity
+    payload['gap'] = gap
+    payload['num_clients'] = num_clients
+    all_routes = map.get_routes
+    fw = FileWriter("Results/" + name + "/first_exchange.txt")
+    write_problem_details(fw, payload)
+    write_solution_details(fw, payload)
+    write_all_routes(fw, all_routes)
+
+
+def write_problem_details(writer, payload):
+    writer.write("PROBLEM DETAILS:")
+    writer.write("\nCustomers = " + str(payload['num_clients']))
+    writer.write("\nMax Load = " + str(payload['maxload']))
+    writer.write("\nMax Cost = 99999999999999")
+
+
+def write_solution_details(writer, payload):
+    # write solution details to file
+    writer.write("\n\nSOLUTION DETAILS: ")
+    writer.write("\nTotal Cost = " + str(payload['cost']))
+    writer.write("\nRoutes Of the Solution = " + str(len(payload['map'].get_routes)))
+    writer.write("\nGAP = " + str(payload['gap']) + " %")
+
+
+def write_all_routes(writer, all_routes):
+    # write all routes to file
+    for route in all_routes:
+        assert isinstance(route, Route)
+        writer.write("\n\nROUTE " + str(route.get_index) + ":")
+        writer.write("\nCost = " + str(route.get_cost))
+        writer.write("\nDelivery Load = " + str(route.get_delivery_load))
+        writer.write("\nPick-Up Load = " + str(route.get_pickup_load))
+        writer.write("\nCustomers in Route = " + str(len(route.get_nodes)))
+        # writer.write("\nVertex Sequence :\n" + route["vertices"])
 
 
 def main():

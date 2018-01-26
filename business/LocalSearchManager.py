@@ -69,7 +69,7 @@ class LocalSearchManager:
         print 'Served clients: ', len(allnodesStock)
         print len(self.cost_map.keys())
 
-        return self.cost_map[min_cost]
+        return self.cost_map[min_cost], min_cost, self.calculate_gap(min_cost), len(allnodesStock)
 
     def first_exchange(self):
         print ">> first_exchange"
@@ -107,7 +107,7 @@ class LocalSearchManager:
                         print 'GAP: ', self.calculate_gap(costs[-1]), '% '
                         print 'Served clients: ', len(allnodesStock)
                         print len(self.cost_map.keys())
-                        return self.cost_map[costs[-1]]
+                        return self.cost_map[costs[-1]], costs[-1], self.calculate_gap(costs[-1]), len(allnodesStock)
 
                     if s == allnodesr[-2]:
                         break
@@ -120,7 +120,7 @@ class LocalSearchManager:
         print 'Served clients: ', len(allnodesStock)
         print len(self.cost_map.keys())
 
-        return self.cost_map[min_cost]
+        return self.cost_map[min_cost], min_cost, self.calculate_gap(min_cost), len(allnodesStock)
 
     def best_relocate(self):
         print ">> best_relocate"
@@ -164,7 +164,7 @@ class LocalSearchManager:
         print 'Served clients: ', len(allnodesStock)
         print len(self.cost_map.keys())
 
-        return self.cost_map[min_cost]
+        return self.cost_map[min_cost], min_cost, self.calculate_gap(min_cost), len(allnodesStock)
 
     def first_relocate(self):
         print ">> first_relocate"
@@ -203,7 +203,7 @@ class LocalSearchManager:
                         print 'GAP: ', self.calculate_gap(costs[-1]), '% '
                         print 'Served clients: ', len(allnodesStock)
                         print len(self.cost_map.keys())
-                        return self.cost_map[costs[-1]]
+                        return self.cost_map[costs[-1]], costs[-1], self.calculate_gap(costs[-1]), len(allnodesStock)
                     allnodesr = copy(allNodes)
                     if s == allnodesr[-2]:
                         break
@@ -215,7 +215,7 @@ class LocalSearchManager:
         print 'Served clients: ', len(allnodesStock)
         print len(self.cost_map.keys())
 
-        return self.cost_map[min_cost]
+        return self.cost_map[min_cost], min_cost, self.calculate_gap(min_cost), len(allnodesStock)
 
     @staticmethod
     def relocate_element_in_list(lista, old_index, new_index):
