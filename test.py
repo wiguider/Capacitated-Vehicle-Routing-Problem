@@ -127,10 +127,44 @@ def write_all_routes(writer, all_routes):
         # writer.write("\nVertex Sequence :\n" + route["vertices"])
 
 
+def write_results_to_json():
+    files = sorted(glob.glob("Results/*/*.txt"))
+
+    fd = {}
+    for x in files:
+        fn = x.split("/")[1]
+        fd[fn] = []
+
+    for fn in files:
+
+        f = open(fn, "r")
+        tt = fn.split("/")
+        sol = open("RPA_Solutions/Detailed_Solution_" + tt[1] + ".txt")
+        sol_lines = sol.readlines()
+        lines = f.readlines()
+        fd[tt[1]].append(
+                {
+                    "method": tt[2].split(".")[0],
+                    "perfect_cost": sol_lines[8].split(" = ")[1].replace("\r\n", ""),
+                    "our_cost": lines[6].split(" = ")[1].replace("\n", ""),
+                    "gap": lines[8].split(" = ")[1].replace("%\n", "%")}
+        )
+    res = "{"
+
+    for key in sorted(fd.iterkeys()):
+        res += "\"%s\": %s," % (key, fd[key])
+    res += "}"
+
+    res = res.replace("'", "\"")
+    writer = FileWriter("res.json")
+    writer.write(res)
+
+
 def main():
     # get_a1_rm()
-    get_all_rm()
+    # get_all_rm()
     # local_search()
+    write_results_to_json()
 
 
 if __name__ == '__main__':

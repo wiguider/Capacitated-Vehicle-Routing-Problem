@@ -1,0 +1,1614 @@
+{
+  "A1": [
+    {
+      "perfect_cost": "229886.0",
+      "method": "best_exchange",
+      "our_cost": "344614.3",
+      "gap": "49.91 %"
+    },
+    {
+      "perfect_cost": "229886.0",
+      "method": "best_relocate",
+      "our_cost": "303206.5",
+      "gap": "31.89 %"
+    },
+    {
+      "perfect_cost": "229886.0",
+      "method": "first_exchange",
+      "our_cost": "344614.3",
+      "gap": "49.91 %"
+    },
+    {
+      "perfect_cost": "229886.0",
+      "method": "first_relocate",
+      "our_cost": "314386.52",
+      "gap": "36.76 %"
+    }
+  ],
+  "A2": [
+    {
+      "perfect_cost": "180119.0",
+      "method": "best_exchange",
+      "our_cost": "345249.05",
+      "gap": "9.17 %"
+    },
+    {
+      "perfect_cost": "180119.0",
+      "method": "best_relocate",
+      "our_cost": "324120.8",
+      "gap": "8.0 %"
+    },
+    {
+      "perfect_cost": "180119.0",
+      "method": "first_exchange",
+      "our_cost": "367714.22",
+      "gap": "10.42 %"
+    },
+    {
+      "perfect_cost": "180119.0",
+      "method": "first_relocate",
+      "our_cost": "301777.18",
+      "gap": "6.75 %"
+    }
+  ],
+  "A3": [
+    {
+      "perfect_cost": "163405.0",
+      "method": "best_exchange",
+      "our_cost": "362092.36",
+      "gap": "12.16 %"
+    },
+    {
+      "perfect_cost": "163405.0",
+      "method": "best_relocate",
+      "our_cost": "309822.08",
+      "gap": "8.96 %"
+    },
+    {
+      "perfect_cost": "163405.0",
+      "method": "first_exchange",
+      "our_cost": "362092.36",
+      "gap": "12.16 %"
+    },
+    {
+      "perfect_cost": "163405.0",
+      "method": "first_relocate",
+      "our_cost": "305859.31",
+      "gap": "8.72 %"
+    }
+  ],
+  "A4": [
+    {
+      "perfect_cost": "155796.0",
+      "method": "best_exchange",
+      "our_cost": "346976.54",
+      "gap": "12.27 %"
+    },
+    {
+      "perfect_cost": "155796.0",
+      "method": "best_relocate",
+      "our_cost": "329494.66",
+      "gap": "11.15 %"
+    },
+    {
+      "perfect_cost": "155796.0",
+      "method": "first_exchange",
+      "our_cost": "359624.85",
+      "gap": "13.08 %"
+    },
+    {
+      "perfect_cost": "155796.0",
+      "method": "first_relocate",
+      "our_cost": "341324.48",
+      "gap": "11.91 %"
+    }
+  ],
+  "B1": [
+    {
+      "perfect_cost": "239080.0",
+      "method": "best_exchange",
+      "our_cost": "436875.32",
+      "gap": "8.27 %"
+    },
+    {
+      "perfect_cost": "239080.0",
+      "method": "best_relocate",
+      "our_cost": "415919.5",
+      "gap": "7.4 %"
+    },
+    {
+      "perfect_cost": "239080.0",
+      "method": "first_exchange",
+      "our_cost": "436875.32",
+      "gap": "8.27 %"
+    },
+    {
+      "perfect_cost": "239080.0",
+      "method": "first_relocate",
+      "our_cost": "439531.58",
+      "gap": "8.38 %"
+    }
+  ],
+  "B2": [
+    {
+      "perfect_cost": "198048.0",
+      "method": "best_exchange",
+      "our_cost": "374844.51",
+      "gap": "8.93 %"
+    },
+    {
+      "perfect_cost": "198048.0",
+      "method": "best_relocate",
+      "our_cost": "383455.11",
+      "gap": "9.36 %"
+    },
+    {
+      "perfect_cost": "198048.0",
+      "method": "first_exchange",
+      "our_cost": "402768.62",
+      "gap": "10.34 %"
+    },
+    {
+      "perfect_cost": "198048.0",
+      "method": "first_relocate",
+      "our_cost": "395302.63",
+      "gap": "9.96 %"
+    }
+  ],
+  "B3": [
+    {
+      "perfect_cost": "169372.0",
+      "method": "best_exchange",
+      "our_cost": "373394.64",
+      "gap": "12.05 %"
+    },
+    {
+      "perfect_cost": "169372.0",
+      "method": "best_relocate",
+      "our_cost": "369187.46",
+      "gap": "11.8 %"
+    },
+    {
+      "perfect_cost": "169372.0",
+      "method": "first_exchange",
+      "our_cost": "377039.32",
+      "gap": "12.26 %"
+    },
+    {
+      "perfect_cost": "169372.0",
+      "method": "first_relocate",
+      "our_cost": "384277.17",
+      "gap": "12.69 %"
+    }
+  ],
+  "C1": [
+    {
+      "perfect_cost": "250556.0",
+      "method": "best_exchange",
+      "our_cost": "567234.83",
+      "gap": "12.64 %"
+    },
+    {
+      "perfect_cost": "250556.0",
+      "method": "best_relocate",
+      "our_cost": "509156.54",
+      "gap": "10.32 %"
+    },
+    {
+      "perfect_cost": "250556.0",
+      "method": "first_exchange",
+      "our_cost": "583403.58",
+      "gap": "13.28 %"
+    },
+    {
+      "perfect_cost": "250556.0",
+      "method": "first_relocate",
+      "our_cost": "529986.0",
+      "gap": "11.15 %"
+    }
+  ],
+  "C2": [
+    {
+      "perfect_cost": "215020.0",
+      "method": "best_exchange",
+      "our_cost": "541148.48",
+      "gap": "15.17 %"
+    },
+    {
+      "perfect_cost": "215020.0",
+      "method": "best_relocate",
+      "our_cost": "551653.29",
+      "gap": "15.66 %"
+    },
+    {
+      "perfect_cost": "215020.0",
+      "method": "first_exchange",
+      "our_cost": "561492.1",
+      "gap": "16.11 %"
+    },
+    {
+      "perfect_cost": "215020.0",
+      "method": "first_relocate",
+      "our_cost": "563552.46",
+      "gap": "16.21 %"
+    }
+  ],
+  "C3": [
+    {
+      "perfect_cost": "199346.0",
+      "method": "best_exchange",
+      "our_cost": "515498.29",
+      "gap": "15.86 %"
+    },
+    {
+      "perfect_cost": "199346.0",
+      "method": "best_relocate",
+      "our_cost": "479220.18",
+      "gap": "14.04 %"
+    },
+    {
+      "perfect_cost": "199346.0",
+      "method": "first_exchange",
+      "our_cost": "515498.29",
+      "gap": "15.86 %"
+    },
+    {
+      "perfect_cost": "199346.0",
+      "method": "first_relocate",
+      "our_cost": "507282.42",
+      "gap": "15.45 %"
+    }
+  ],
+  "C4": [
+    {
+      "perfect_cost": "195366.0",
+      "method": "best_exchange",
+      "our_cost": "527255.22",
+      "gap": "16.99 %"
+    },
+    {
+      "perfect_cost": "195366.0",
+      "method": "best_relocate",
+      "our_cost": "537262.58",
+      "gap": "17.5 %"
+    },
+    {
+      "perfect_cost": "195366.0",
+      "method": "first_exchange",
+      "our_cost": "552198.81",
+      "gap": "18.27 %"
+    },
+    {
+      "perfect_cost": "195366.0",
+      "method": "first_relocate",
+      "our_cost": "528173.27",
+      "gap": "17.04 %"
+    }
+  ],
+  "D1": [
+    {
+      "perfect_cost": "322530.0",
+      "method": "best_exchange",
+      "our_cost": "508207.62",
+      "gap": "5.76 %"
+    },
+    {
+      "perfect_cost": "322530.0",
+      "method": "best_relocate",
+      "our_cost": "396268.47",
+      "gap": "22.86 %"
+    },
+    {
+      "perfect_cost": "322530.0",
+      "method": "first_exchange",
+      "our_cost": "531055.07",
+      "gap": "6.47 %"
+    },
+    {
+      "perfect_cost": "322530.0",
+      "method": "first_relocate",
+      "our_cost": "403259.32",
+      "gap": "25.03 %"
+    }
+  ],
+  "D2": [
+    {
+      "perfect_cost": "316708.0",
+      "method": "best_exchange",
+      "our_cost": "507352.59",
+      "gap": "6.02 %"
+    },
+    {
+      "perfect_cost": "316708.0",
+      "method": "best_relocate",
+      "our_cost": "473284.62",
+      "gap": "49.44 %"
+    },
+    {
+      "perfect_cost": "316708.0",
+      "method": "first_exchange",
+      "our_cost": "538568.91",
+      "gap": "7.0 %"
+    },
+    {
+      "perfect_cost": "316708.0",
+      "method": "first_relocate",
+      "our_cost": "481302.07",
+      "gap": "5.2 %"
+    }
+  ],
+  "D3": [
+    {
+      "perfect_cost": "239479.0",
+      "method": "best_exchange",
+      "our_cost": "495618.32",
+      "gap": "10.7 %"
+    },
+    {
+      "perfect_cost": "239479.0",
+      "method": "best_relocate",
+      "our_cost": "545137.87",
+      "gap": "12.76 %"
+    },
+    {
+      "perfect_cost": "239479.0",
+      "method": "first_exchange",
+      "our_cost": "521398.03",
+      "gap": "11.77 %"
+    },
+    {
+      "perfect_cost": "239479.0",
+      "method": "first_relocate",
+      "our_cost": "554932.24",
+      "gap": "13.17 %"
+    }
+  ],
+  "D4": [
+    {
+      "perfect_cost": "205832.0",
+      "method": "best_exchange",
+      "our_cost": "495417.86",
+      "gap": "14.07 %"
+    },
+    {
+      "perfect_cost": "205832.0",
+      "method": "best_relocate",
+      "our_cost": "532290.36",
+      "gap": "15.86 %"
+    },
+    {
+      "perfect_cost": "205832.0",
+      "method": "first_exchange",
+      "our_cost": "515490.21",
+      "gap": "15.04 %"
+    },
+    {
+      "perfect_cost": "205832.0",
+      "method": "first_relocate",
+      "our_cost": "533575.1",
+      "gap": "15.92 %"
+    }
+  ],
+  "E1": [
+    {
+      "perfect_cost": "238880.0",
+      "method": "best_exchange",
+      "our_cost": "557898.93",
+      "gap": "13.36 %"
+    },
+    {
+      "perfect_cost": "238880.0",
+      "method": "best_relocate",
+      "our_cost": "575170.62",
+      "gap": "14.08 %"
+    },
+    {
+      "perfect_cost": "238880.0",
+      "method": "first_exchange",
+      "our_cost": "572928.28",
+      "gap": "13.98 %"
+    },
+    {
+      "perfect_cost": "238880.0",
+      "method": "first_relocate",
+      "our_cost": "579050.99",
+      "gap": "14.24 %"
+    }
+  ],
+  "E2": [
+    {
+      "perfect_cost": "212263.0",
+      "method": "best_exchange",
+      "our_cost": "570429.9",
+      "gap": "16.87 %"
+    },
+    {
+      "perfect_cost": "212263.0",
+      "method": "best_relocate",
+      "our_cost": "624188.41",
+      "gap": "19.41 %"
+    },
+    {
+      "perfect_cost": "212263.0",
+      "method": "first_exchange",
+      "our_cost": "570429.9",
+      "gap": "16.87 %"
+    },
+    {
+      "perfect_cost": "212263.0",
+      "method": "first_relocate",
+      "our_cost": "595697.13",
+      "gap": "18.06 %"
+    }
+  ],
+  "E3": [
+    {
+      "perfect_cost": "206659.0",
+      "method": "best_exchange",
+      "our_cost": "589530.84",
+      "gap": "18.53 %"
+    },
+    {
+      "perfect_cost": "206659.0",
+      "method": "best_relocate",
+      "our_cost": "542371.52",
+      "gap": "16.24 %"
+    },
+    {
+      "perfect_cost": "206659.0",
+      "method": "first_exchange",
+      "our_cost": "612549.43",
+      "gap": "19.64 %"
+    },
+    {
+      "perfect_cost": "206659.0",
+      "method": "first_relocate",
+      "our_cost": "570069.8",
+      "gap": "17.59 %"
+    }
+  ],
+  "F1": [
+    {
+      "perfect_cost": "263173.0",
+      "method": "best_exchange",
+      "our_cost": "761022.91",
+      "gap": "18.92 %"
+    },
+    {
+      "perfect_cost": "263173.0",
+      "method": "best_relocate",
+      "our_cost": "817417.83",
+      "gap": "21.06 %"
+    },
+    {
+      "perfect_cost": "263173.0",
+      "method": "first_exchange",
+      "our_cost": "779668.29",
+      "gap": "19.63 %"
+    },
+    {
+      "perfect_cost": "263173.0",
+      "method": "first_relocate",
+      "our_cost": "832890.57",
+      "gap": "21.65 %"
+    }
+  ],
+  "F2": [
+    {
+      "perfect_cost": "265213.0",
+      "method": "best_exchange",
+      "our_cost": "783980.74",
+      "gap": "19.56 %"
+    },
+    {
+      "perfect_cost": "265213.0",
+      "method": "best_relocate",
+      "our_cost": "781402.02",
+      "gap": "19.46 %"
+    },
+    {
+      "perfect_cost": "265213.0",
+      "method": "first_exchange",
+      "our_cost": "797756.87",
+      "gap": "20.08 %"
+    },
+    {
+      "perfect_cost": "265213.0",
+      "method": "first_relocate",
+      "our_cost": "797027.12",
+      "gap": "20.05 %"
+    }
+  ],
+  "F3": [
+    {
+      "perfect_cost": "241120.0",
+      "method": "best_exchange",
+      "our_cost": "753328.26",
+      "gap": "21.24 %"
+    },
+    {
+      "perfect_cost": "241120.0",
+      "method": "best_relocate",
+      "our_cost": "793990.81",
+      "gap": "22.93 %"
+    },
+    {
+      "perfect_cost": "241120.0",
+      "method": "first_exchange",
+      "our_cost": "769273.57",
+      "gap": "21.9 %"
+    },
+    {
+      "perfect_cost": "241120.0",
+      "method": "first_relocate",
+      "our_cost": "823119.65",
+      "gap": "24.14 %"
+    }
+  ],
+  "F4": [
+    {
+      "perfect_cost": "233861.0",
+      "method": "best_exchange",
+      "our_cost": "747564.93",
+      "gap": "21.97 %"
+    },
+    {
+      "perfect_cost": "233861.0",
+      "method": "best_relocate",
+      "our_cost": "832388.81",
+      "gap": "25.59 %"
+    },
+    {
+      "perfect_cost": "233861.0",
+      "method": "first_exchange",
+      "our_cost": "777307.68",
+      "gap": "23.24 %"
+    },
+    {
+      "perfect_cost": "233861.0",
+      "method": "first_relocate",
+      "our_cost": "857046.06",
+      "gap": "26.65 %"
+    }
+  ],
+  "G1": [
+    {
+      "perfect_cost": "306306.0",
+      "method": "best_exchange",
+      "our_cost": "704305.41",
+      "gap": "12.99 %"
+    },
+    {
+      "perfect_cost": "306306.0",
+      "method": "best_relocate",
+      "our_cost": "728451.34",
+      "gap": "13.78 %"
+    },
+    {
+      "perfect_cost": "306306.0",
+      "method": "first_exchange",
+      "our_cost": "729635.95",
+      "gap": "13.82 %"
+    },
+    {
+      "perfect_cost": "306306.0",
+      "method": "first_relocate",
+      "our_cost": "755083.64",
+      "gap": "14.65 %"
+    }
+  ],
+  "G2": [
+    {
+      "perfect_cost": "245441.0",
+      "method": "best_exchange",
+      "our_cost": "781502.23",
+      "gap": "21.84 %"
+    },
+    {
+      "perfect_cost": "245441.0",
+      "method": "best_relocate",
+      "our_cost": "848611.61",
+      "gap": "24.57 %"
+    },
+    {
+      "perfect_cost": "245441.0",
+      "method": "first_exchange",
+      "our_cost": "808559.78",
+      "gap": "22.94 %"
+    },
+    {
+      "perfect_cost": "245441.0",
+      "method": "first_relocate",
+      "our_cost": "873483.9",
+      "gap": "25.59 %"
+    }
+  ],
+  "G3": [
+    {
+      "perfect_cost": "229507.0",
+      "method": "best_exchange",
+      "our_cost": "767310.65",
+      "gap": "23.43 %"
+    },
+    {
+      "perfect_cost": "229507.0",
+      "method": "best_relocate",
+      "our_cost": "791121.19",
+      "gap": "24.47 %"
+    },
+    {
+      "perfect_cost": "229507.0",
+      "method": "first_exchange",
+      "our_cost": "775085.82",
+      "gap": "23.77 %"
+    },
+    {
+      "perfect_cost": "229507.0",
+      "method": "first_relocate",
+      "our_cost": "794306.65",
+      "gap": "24.61 %"
+    }
+  ],
+  "G4": [
+    {
+      "perfect_cost": "232521.0",
+      "method": "best_exchange",
+      "our_cost": "853496.1",
+      "gap": "26.71 %"
+    },
+    {
+      "perfect_cost": "232521.0",
+      "method": "best_relocate",
+      "our_cost": "779718.78",
+      "gap": "23.53 %"
+    },
+    {
+      "perfect_cost": "232521.0",
+      "method": "first_exchange",
+      "our_cost": "871076.15",
+      "gap": "27.46 %"
+    },
+    {
+      "perfect_cost": "232521.0",
+      "method": "first_relocate",
+      "our_cost": "809436.96",
+      "gap": "24.81 %"
+    }
+  ],
+  "G5": [
+    {
+      "perfect_cost": "221730.0",
+      "method": "best_exchange",
+      "our_cost": "776389.46",
+      "gap": "25.02 %"
+    },
+    {
+      "perfect_cost": "221730.0",
+      "method": "best_relocate",
+      "our_cost": "728049.97",
+      "gap": "22.84 %"
+    },
+    {
+      "perfect_cost": "221730.0",
+      "method": "first_exchange",
+      "our_cost": "808859.92",
+      "gap": "26.48 %"
+    },
+    {
+      "perfect_cost": "221730.0",
+      "method": "first_relocate",
+      "our_cost": "757276.12",
+      "gap": "24.15 %"
+    }
+  ],
+  "G6": [
+    {
+      "perfect_cost": "213457.0",
+      "method": "best_exchange",
+      "our_cost": "729071.88",
+      "gap": "24.16 %"
+    },
+    {
+      "perfect_cost": "213457.0",
+      "method": "best_relocate",
+      "our_cost": "772875.43",
+      "gap": "26.21 %"
+    },
+    {
+      "perfect_cost": "213457.0",
+      "method": "first_exchange",
+      "our_cost": "757603.65",
+      "gap": "25.49 %"
+    },
+    {
+      "perfect_cost": "213457.0",
+      "method": "first_relocate",
+      "our_cost": "770457.91",
+      "gap": "26.09 %"
+    }
+  ],
+  "H1": [
+    {
+      "perfect_cost": "268933.0",
+      "method": "best_exchange",
+      "our_cost": "839660.6",
+      "gap": "21.22 %"
+    },
+    {
+      "perfect_cost": "268933.0",
+      "method": "best_relocate",
+      "our_cost": "827901.74",
+      "gap": "20.79 %"
+    },
+    {
+      "perfect_cost": "268933.0",
+      "method": "first_exchange",
+      "our_cost": "860270.81",
+      "gap": "21.99 %"
+    },
+    {
+      "perfect_cost": "268933.0",
+      "method": "first_relocate",
+      "our_cost": "836246.48",
+      "gap": "21.09 %"
+    }
+  ],
+  "H2": [
+    {
+      "perfect_cost": "253365.0",
+      "method": "best_exchange",
+      "our_cost": "917052.05",
+      "gap": "26.2 %"
+    },
+    {
+      "perfect_cost": "253365.0",
+      "method": "best_relocate",
+      "our_cost": "960560.35",
+      "gap": "27.91 %"
+    },
+    {
+      "perfect_cost": "253365.0",
+      "method": "first_exchange",
+      "our_cost": "936233.02",
+      "gap": "26.95 %"
+    },
+    {
+      "perfect_cost": "253365.0",
+      "method": "first_relocate",
+      "our_cost": "958684.17",
+      "gap": "27.84 %"
+    }
+  ],
+  "H3": [
+    {
+      "perfect_cost": "247449.0",
+      "method": "best_exchange",
+      "our_cost": "960035.7",
+      "gap": "28.8 %"
+    },
+    {
+      "perfect_cost": "247449.0",
+      "method": "best_relocate",
+      "our_cost": "981301.34",
+      "gap": "29.66 %"
+    },
+    {
+      "perfect_cost": "247449.0",
+      "method": "first_exchange",
+      "our_cost": "960035.7",
+      "gap": "28.8 %"
+    },
+    {
+      "perfect_cost": "247449.0",
+      "method": "first_relocate",
+      "our_cost": "995737.72",
+      "gap": "30.24 %"
+    }
+  ],
+  "H4": [
+    {
+      "perfect_cost": "250221.0",
+      "method": "best_exchange",
+      "our_cost": "838082.69",
+      "gap": "23.49 %"
+    },
+    {
+      "perfect_cost": "250221.0",
+      "method": "best_relocate",
+      "our_cost": "895882.59",
+      "gap": "25.8 %"
+    },
+    {
+      "perfect_cost": "250221.0",
+      "method": "first_exchange",
+      "our_cost": "856469.49",
+      "gap": "24.23 %"
+    },
+    {
+      "perfect_cost": "250221.0",
+      "method": "first_relocate",
+      "our_cost": "923659.55",
+      "gap": "26.91 %"
+    }
+  ],
+  "H5": [
+    {
+      "perfect_cost": "246121.0",
+      "method": "best_exchange",
+      "our_cost": "956733.73",
+      "gap": "28.87 %"
+    },
+    {
+      "perfect_cost": "246121.0",
+      "method": "best_relocate",
+      "our_cost": "871947.37",
+      "gap": "25.43 %"
+    },
+    {
+      "perfect_cost": "246121.0",
+      "method": "first_exchange",
+      "our_cost": "988936.83",
+      "gap": "30.18 %"
+    },
+    {
+      "perfect_cost": "246121.0",
+      "method": "first_relocate",
+      "our_cost": "899853.62",
+      "gap": "26.56 %"
+    }
+  ],
+  "H6": [
+    {
+      "perfect_cost": "249135.0",
+      "method": "best_exchange",
+      "our_cost": "877796.64",
+      "gap": "25.23 %"
+    },
+    {
+      "perfect_cost": "249135.0",
+      "method": "best_relocate",
+      "our_cost": "901488.26",
+      "gap": "26.19 %"
+    },
+    {
+      "perfect_cost": "249135.0",
+      "method": "first_exchange",
+      "our_cost": "901275.82",
+      "gap": "26.18 %"
+    },
+    {
+      "perfect_cost": "249135.0",
+      "method": "first_relocate",
+      "our_cost": "918763.58",
+      "gap": "26.88 %"
+    }
+  ],
+  "I1": [
+    {
+      "perfect_cost": "350246.0",
+      "method": "best_exchange",
+      "our_cost": "1171338.39",
+      "gap": "23.44 %"
+    },
+    {
+      "perfect_cost": "350246.0",
+      "method": "best_relocate",
+      "our_cost": "1243673.85",
+      "gap": "25.51 %"
+    },
+    {
+      "perfect_cost": "350246.0",
+      "method": "first_exchange",
+      "our_cost": "1188017.08",
+      "gap": "23.92 %"
+    },
+    {
+      "perfect_cost": "350246.0",
+      "method": "first_relocate",
+      "our_cost": "1255418.93",
+      "gap": "25.84 %"
+    }
+  ],
+  "I2": [
+    {
+      "perfect_cost": "309944.0",
+      "method": "best_exchange",
+      "our_cost": "1262028.01",
+      "gap": "30.72 %"
+    },
+    {
+      "perfect_cost": "309944.0",
+      "method": "best_relocate",
+      "our_cost": "1163027.31",
+      "gap": "27.52 %"
+    },
+    {
+      "perfect_cost": "309944.0",
+      "method": "first_exchange",
+      "our_cost": "1283880.89",
+      "gap": "31.42 %"
+    },
+    {
+      "perfect_cost": "309944.0",
+      "method": "first_relocate",
+      "our_cost": "1165594.74",
+      "gap": "27.61 %"
+    }
+  ],
+  "I3": [
+    {
+      "perfect_cost": "294507.0",
+      "method": "best_exchange",
+      "our_cost": "1218092.73",
+      "gap": "31.36 %"
+    },
+    {
+      "perfect_cost": "294507.0",
+      "method": "best_relocate",
+      "our_cost": "1197895.89",
+      "gap": "30.68 %"
+    },
+    {
+      "perfect_cost": "294507.0",
+      "method": "first_exchange",
+      "our_cost": "1253870.26",
+      "gap": "32.58 %"
+    },
+    {
+      "perfect_cost": "294507.0",
+      "method": "first_relocate",
+      "our_cost": "1213858.91",
+      "gap": "31.22 %"
+    }
+  ],
+  "I4": [
+    {
+      "perfect_cost": "295988.0",
+      "method": "best_exchange",
+      "our_cost": "1224623.48",
+      "gap": "31.37 %"
+    },
+    {
+      "perfect_cost": "295988.0",
+      "method": "best_relocate",
+      "our_cost": "1183717.52",
+      "gap": "29.99 %"
+    },
+    {
+      "perfect_cost": "295988.0",
+      "method": "first_exchange",
+      "our_cost": "1249809.49",
+      "gap": "32.23 %"
+    },
+    {
+      "perfect_cost": "295988.0",
+      "method": "first_relocate",
+      "our_cost": "1213812.47",
+      "gap": "31.01 %"
+    }
+  ],
+  "I5": [
+    {
+      "perfect_cost": "301236.0",
+      "method": "best_exchange",
+      "our_cost": "1139362.32",
+      "gap": "27.82 %"
+    },
+    {
+      "perfect_cost": "301236.0",
+      "method": "best_relocate",
+      "our_cost": "1150335.35",
+      "gap": "28.19 %"
+    },
+    {
+      "perfect_cost": "301236.0",
+      "method": "first_exchange",
+      "our_cost": "1164001.24",
+      "gap": "28.64 %"
+    },
+    {
+      "perfect_cost": "301236.0",
+      "method": "first_relocate",
+      "our_cost": "1187304.95",
+      "gap": "29.41 %"
+    }
+  ],
+  "J1": [
+    {
+      "perfect_cost": "335006.0",
+      "method": "best_exchange",
+      "our_cost": "1217588.95",
+      "gap": "26.34 %"
+    },
+    {
+      "perfect_cost": "335006.0",
+      "method": "best_relocate",
+      "our_cost": "1260168.55",
+      "gap": "27.62 %"
+    },
+    {
+      "perfect_cost": "335006.0",
+      "method": "first_exchange",
+      "our_cost": "1239624.63",
+      "gap": "27.0 %"
+    },
+    {
+      "perfect_cost": "335006.0",
+      "method": "first_relocate",
+      "our_cost": "1269076.76",
+      "gap": "27.88 %"
+    }
+  ],
+  "J2": [
+    {
+      "perfect_cost": "310417.0",
+      "method": "best_exchange",
+      "our_cost": "1148421.71",
+      "gap": "27.0 %"
+    },
+    {
+      "perfect_cost": "310417.0",
+      "method": "best_relocate",
+      "our_cost": "1275308.45",
+      "gap": "31.08 %"
+    },
+    {
+      "perfect_cost": "310417.0",
+      "method": "first_exchange",
+      "our_cost": "1166918.38",
+      "gap": "27.59 %"
+    },
+    {
+      "perfect_cost": "310417.0",
+      "method": "first_relocate",
+      "our_cost": "1277045.78",
+      "gap": "31.14 %"
+    }
+  ],
+  "J3": [
+    {
+      "perfect_cost": "279219.0",
+      "method": "best_exchange",
+      "our_cost": "1196937.96",
+      "gap": "32.87 %"
+    },
+    {
+      "perfect_cost": "279219.0",
+      "method": "best_relocate",
+      "our_cost": "1207922.28",
+      "gap": "33.26 %"
+    },
+    {
+      "perfect_cost": "279219.0",
+      "method": "first_exchange",
+      "our_cost": "1225576.8",
+      "gap": "33.89 %"
+    },
+    {
+      "perfect_cost": "279219.0",
+      "method": "first_relocate",
+      "our_cost": "1235542.52",
+      "gap": "34.25 %"
+    }
+  ],
+  "J4": [
+    {
+      "perfect_cost": "296533.0",
+      "method": "best_exchange",
+      "our_cost": "1275032.49",
+      "gap": "33.0 %"
+    },
+    {
+      "perfect_cost": "296533.0",
+      "method": "best_relocate",
+      "our_cost": "1254329.35",
+      "gap": "32.3 %"
+    },
+    {
+      "perfect_cost": "296533.0",
+      "method": "first_exchange",
+      "our_cost": "1308606.24",
+      "gap": "34.13 %"
+    },
+    {
+      "perfect_cost": "296533.0",
+      "method": "first_relocate",
+      "our_cost": "1269803.08",
+      "gap": "32.82 %"
+    }
+  ],
+  "K1": [
+    {
+      "perfect_cost": "394071.0",
+      "method": "best_exchange",
+      "our_cost": "1503997.21",
+      "gap": "28.17 %"
+    },
+    {
+      "perfect_cost": "394071.0",
+      "method": "best_relocate",
+      "our_cost": "1541012.84",
+      "gap": "29.11 %"
+    },
+    {
+      "perfect_cost": "394071.0",
+      "method": "first_exchange",
+      "our_cost": "1523613.19",
+      "gap": "28.66 %"
+    },
+    {
+      "perfect_cost": "394071.0",
+      "method": "first_relocate",
+      "our_cost": "1542596.57",
+      "gap": "29.14 %"
+    }
+  ],
+  "K2": [
+    {
+      "perfect_cost": "362130.0",
+      "method": "best_exchange",
+      "our_cost": "1582874.12",
+      "gap": "33.71 %"
+    },
+    {
+      "perfect_cost": "362130.0",
+      "method": "best_relocate",
+      "our_cost": "1517951.93",
+      "gap": "31.92 %"
+    },
+    {
+      "perfect_cost": "362130.0",
+      "method": "first_exchange",
+      "our_cost": "1608167.1",
+      "gap": "34.41 %"
+    },
+    {
+      "perfect_cost": "362130.0",
+      "method": "first_relocate",
+      "our_cost": "1540827.17",
+      "gap": "32.55 %"
+    }
+  ],
+  "K3": [
+    {
+      "perfect_cost": "365694.0",
+      "method": "best_exchange",
+      "our_cost": "1646558.15",
+      "gap": "35.03 %"
+    },
+    {
+      "perfect_cost": "365694.0",
+      "method": "best_relocate",
+      "our_cost": "1631351.72",
+      "gap": "34.61 %"
+    },
+    {
+      "perfect_cost": "365694.0",
+      "method": "first_exchange",
+      "our_cost": "1670875.05",
+      "gap": "35.69 %"
+    },
+    {
+      "perfect_cost": "365694.0",
+      "method": "first_relocate",
+      "our_cost": "1653533.89",
+      "gap": "35.22 %"
+    }
+  ],
+  "K4": [
+    {
+      "perfect_cost": "348950.0",
+      "method": "best_exchange",
+      "our_cost": "1602380.8",
+      "gap": "35.92 %"
+    },
+    {
+      "perfect_cost": "348950.0",
+      "method": "best_relocate",
+      "our_cost": "1536729.6",
+      "gap": "34.04 %"
+    },
+    {
+      "perfect_cost": "348950.0",
+      "method": "first_exchange",
+      "our_cost": "1639676.08",
+      "gap": "36.99 %"
+    },
+    {
+      "perfect_cost": "348950.0",
+      "method": "first_relocate",
+      "our_cost": "1537376.87",
+      "gap": "34.06 %"
+    }
+  ],
+  "L1": [
+    {
+      "perfect_cost": "417896.0",
+      "method": "best_exchange",
+      "our_cost": "2059343.65",
+      "gap": "39.28 %"
+    },
+    {
+      "perfect_cost": "417896.0",
+      "method": "best_relocate",
+      "our_cost": "1991970.76",
+      "gap": "37.67 %"
+    },
+    {
+      "perfect_cost": "417896.0",
+      "method": "first_exchange",
+      "our_cost": "2076330.21",
+      "gap": "39.69 %"
+    },
+    {
+      "perfect_cost": "417896.0",
+      "method": "first_relocate",
+      "our_cost": "1996909.01",
+      "gap": "37.79 %"
+    }
+  ],
+  "L2": [
+    {
+      "perfect_cost": "401228.0",
+      "method": "best_exchange",
+      "our_cost": "1920536.56",
+      "gap": "37.87 %"
+    },
+    {
+      "perfect_cost": "401228.0",
+      "method": "best_relocate",
+      "our_cost": "2096383.82",
+      "gap": "42.25 %"
+    },
+    {
+      "perfect_cost": "401228.0",
+      "method": "first_exchange",
+      "our_cost": "1934578.0",
+      "gap": "38.22 %"
+    },
+    {
+      "perfect_cost": "401228.0",
+      "method": "first_relocate",
+      "our_cost": "2090525.53",
+      "gap": "42.1 %"
+    }
+  ],
+  "L3": [
+    {
+      "perfect_cost": "402678.0",
+      "method": "best_exchange",
+      "our_cost": "1899592.76",
+      "gap": "37.17 %"
+    },
+    {
+      "perfect_cost": "402678.0",
+      "method": "best_relocate",
+      "our_cost": "2036592.68",
+      "gap": "40.58 %"
+    },
+    {
+      "perfect_cost": "402678.0",
+      "method": "first_exchange",
+      "our_cost": "1930603.93",
+      "gap": "37.94 %"
+    },
+    {
+      "perfect_cost": "402678.0",
+      "method": "first_relocate",
+      "our_cost": "2053586.82",
+      "gap": "41.0 %"
+    }
+  ],
+  "L4": [
+    {
+      "perfect_cost": "384636.0",
+      "method": "best_exchange",
+      "our_cost": "2024671.74",
+      "gap": "42.64 %"
+    },
+    {
+      "perfect_cost": "384636.0",
+      "method": "best_relocate",
+      "our_cost": "2032519.95",
+      "gap": "42.84 %"
+    },
+    {
+      "perfect_cost": "384636.0",
+      "method": "first_exchange",
+      "our_cost": "2043495.95",
+      "gap": "43.13 %"
+    },
+    {
+      "perfect_cost": "384636.0",
+      "method": "first_relocate",
+      "our_cost": "2079955.65",
+      "gap": "44.08 %"
+    }
+  ],
+  "L5": [
+    {
+      "perfect_cost": "387565.0",
+      "method": "best_exchange",
+      "our_cost": "2167794.43",
+      "gap": "45.93 %"
+    },
+    {
+      "perfect_cost": "387565.0",
+      "method": "best_relocate",
+      "our_cost": "2074618.13",
+      "gap": "43.53 %"
+    },
+    {
+      "perfect_cost": "387565.0",
+      "method": "first_exchange",
+      "our_cost": "2194581.49",
+      "gap": "46.63 %"
+    },
+    {
+      "perfect_cost": "387565.0",
+      "method": "first_relocate",
+      "our_cost": "2093357.0",
+      "gap": "44.01 %"
+    }
+  ],
+  "M1": [
+    {
+      "perfect_cost": "398593.0",
+      "method": "best_exchange",
+      "our_cost": "1763471.17",
+      "gap": "34.24 %"
+    },
+    {
+      "perfect_cost": "398593.0",
+      "method": "best_relocate",
+      "our_cost": "1700395.32",
+      "gap": "32.66 %"
+    },
+    {
+      "perfect_cost": "398593.0",
+      "method": "first_exchange",
+      "our_cost": "1786375.61",
+      "gap": "34.82 %"
+    },
+    {
+      "perfect_cost": "398593.0",
+      "method": "first_relocate",
+      "our_cost": "1723103.91",
+      "gap": "33.23 %"
+    }
+  ],
+  "M2": [
+    {
+      "perfect_cost": "396917.0",
+      "method": "best_exchange",
+      "our_cost": "1684985.58",
+      "gap": "32.45 %"
+    },
+    {
+      "perfect_cost": "396917.0",
+      "method": "best_relocate",
+      "our_cost": "1692723.97",
+      "gap": "32.65 %"
+    },
+    {
+      "perfect_cost": "396917.0",
+      "method": "first_exchange",
+      "our_cost": "1701955.12",
+      "gap": "32.88 %"
+    },
+    {
+      "perfect_cost": "396917.0",
+      "method": "first_relocate",
+      "our_cost": "1714052.46",
+      "gap": "33.18 %"
+    }
+  ],
+  "M3": [
+    {
+      "perfect_cost": "375696.0",
+      "method": "best_exchange",
+      "our_cost": "1624726.8",
+      "gap": "33.25 %"
+    },
+    {
+      "perfect_cost": "375696.0",
+      "method": "best_relocate",
+      "our_cost": "1693398.69",
+      "gap": "35.07 %"
+    },
+    {
+      "perfect_cost": "375696.0",
+      "method": "first_exchange",
+      "our_cost": "1635279.09",
+      "gap": "33.53 %"
+    },
+    {
+      "perfect_cost": "375696.0",
+      "method": "first_relocate",
+      "our_cost": "1712401.71",
+      "gap": "35.58 %"
+    }
+  ],
+  "M4": [
+    {
+      "perfect_cost": "348140.0",
+      "method": "best_exchange",
+      "our_cost": "1632331.11",
+      "gap": "36.89 %"
+    },
+    {
+      "perfect_cost": "348140.0",
+      "method": "best_relocate",
+      "our_cost": "1780328.5",
+      "gap": "41.14 %"
+    },
+    {
+      "perfect_cost": "348140.0",
+      "method": "first_exchange",
+      "our_cost": "1651643.87",
+      "gap": "37.44 %"
+    },
+    {
+      "perfect_cost": "348140.0",
+      "method": "first_relocate",
+      "our_cost": "1782932.03",
+      "gap": "41.21 %"
+    }
+  ],
+  "N1": [
+    {
+      "perfect_cost": "408101.0",
+      "method": "best_exchange",
+      "our_cost": "1969637.2",
+      "gap": "38.26 %"
+    },
+    {
+      "perfect_cost": "408101.0",
+      "method": "best_relocate",
+      "our_cost": "2053986.77",
+      "gap": "40.33 %"
+    },
+    {
+      "perfect_cost": "408101.0",
+      "method": "first_exchange",
+      "our_cost": "2003018.42",
+      "gap": "39.08 %"
+    },
+    {
+      "perfect_cost": "408101.0",
+      "method": "first_relocate",
+      "our_cost": "2070389.71",
+      "gap": "40.73 %"
+    }
+  ],
+  "N2": [
+    {
+      "perfect_cost": "408066.0",
+      "method": "best_exchange",
+      "our_cost": "1953471.74",
+      "gap": "37.87 %"
+    },
+    {
+      "perfect_cost": "408066.0",
+      "method": "best_relocate",
+      "our_cost": "2004291.43",
+      "gap": "39.12 %"
+    },
+    {
+      "perfect_cost": "408066.0",
+      "method": "first_exchange",
+      "our_cost": "1975468.17",
+      "gap": "38.41 %"
+    },
+    {
+      "perfect_cost": "408066.0",
+      "method": "first_relocate",
+      "our_cost": "2012055.23",
+      "gap": "39.31 %"
+    }
+  ],
+  "N3": [
+    {
+      "perfect_cost": "394338.0",
+      "method": "best_exchange",
+      "our_cost": "1928329.78",
+      "gap": "38.9 %"
+    },
+    {
+      "perfect_cost": "394338.0",
+      "method": "best_relocate",
+      "our_cost": "1984425.44",
+      "gap": "40.32 %"
+    },
+    {
+      "perfect_cost": "394338.0",
+      "method": "first_exchange",
+      "our_cost": "1952354.24",
+      "gap": "39.51 %"
+    },
+    {
+      "perfect_cost": "394338.0",
+      "method": "first_relocate",
+      "our_cost": "2007089.46",
+      "gap": "40.9 %"
+    }
+  ],
+  "N4": [
+    {
+      "perfect_cost": "394788.0",
+      "method": "best_exchange",
+      "our_cost": "1911366.74",
+      "gap": "38.41 %"
+    },
+    {
+      "perfect_cost": "394788.0",
+      "method": "best_relocate",
+      "our_cost": "2007716.67",
+      "gap": "40.86 %"
+    },
+    {
+      "perfect_cost": "394788.0",
+      "method": "first_exchange",
+      "our_cost": "1938497.52",
+      "gap": "39.1 %"
+    },
+    {
+      "perfect_cost": "394788.0",
+      "method": "first_relocate",
+      "our_cost": "2025670.3",
+      "gap": "41.31 %"
+    }
+  ],
+  "N5": [
+    {
+      "perfect_cost": "373476.0",
+      "method": "best_exchange",
+      "our_cost": "2073334.07",
+      "gap": "45.52 %"
+    },
+    {
+      "perfect_cost": "373476.0",
+      "method": "best_relocate",
+      "our_cost": "2022205.02",
+      "gap": "44.15 %"
+    },
+    {
+      "perfect_cost": "373476.0",
+      "method": "first_exchange",
+      "our_cost": "2105491.24",
+      "gap": "46.38 %"
+    },
+    {
+      "perfect_cost": "373476.0",
+      "method": "first_relocate",
+      "our_cost": "2036132.79",
+      "gap": "44.52 %"
+    }
+  ],
+  "N6": [
+    {
+      "perfect_cost": "373759.0",
+      "method": "best_exchange",
+      "our_cost": "1958414.5",
+      "gap": "42.4 %"
+    },
+    {
+      "perfect_cost": "373759.0",
+      "method": "best_relocate",
+      "our_cost": "2076387.95",
+      "gap": "45.55 %"
+    },
+    {
+      "perfect_cost": "373759.0",
+      "method": "first_exchange",
+      "our_cost": "1995091.31",
+      "gap": "43.38 %"
+    },
+    {
+      "perfect_cost": "373759.0",
+      "method": "first_relocate",
+      "our_cost": "2100184.56",
+      "gap": "46.19 %"
+    }
+  ]
+}
