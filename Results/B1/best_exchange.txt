@@ -4,48 +4,48 @@ Max Load = 1600
 Max Cost = 99999999999999
 
 SOLUTION DETAILS: 
-Total Cost = 436875.32
+Total Cost = 402273.25
 Routes Of the Solution = 7
-GAP = 8.27 %
+GAP = 6.83 %
 
 ROUTE 0:
-Cost = 121263.02
-Delivery Load = 1555
-Pick-Up Load = 1409
-Customers in Route = 9
+Cost = 109066.04
+Delivery Load = 1537
+Pick-Up Load = 1493
+Customers in Route = 10
 
 ROUTE 1:
-Cost = 106022.54
-Delivery Load = 1599
-Pick-Up Load = 1387
-Customers in Route = 8
+Cost = 56237.28
+Delivery Load = 1530
+Pick-Up Load = 1508
+Customers in Route = 6
 
 ROUTE 2:
-Cost = 53193.98
-Delivery Load = 1503
-Pick-Up Load = 1424
+Cost = 87810.52
+Delivery Load = 1563
+Pick-Up Load = 1075
 Customers in Route = 7
 
 ROUTE 3:
-Cost = 56131.69
-Delivery Load = 1318
-Pick-Up Load = 1008
-Customers in Route = 7
+Cost = 79566.93
+Delivery Load = 1590
+Pick-Up Load = 1152
+Customers in Route = 8
 
 ROUTE 4:
-Cost = 39465.46
-Delivery Load = 1273
+Cost = 31154.42
+Delivery Load = 1212
 Pick-Up Load = 0
 Customers in Route = 5
 
 ROUTE 5:
-Cost = 35163.59
-Delivery Load = 1418
+Cost = 17928.25
+Delivery Load = 1585
 Pick-Up Load = 0
 Customers in Route = 4
 
 ROUTE 6:
-Cost = 25635.04
-Delivery Load = 1174
+Cost = 20509.81
+Delivery Load = 823
 Pick-Up Load = 0
 Customers in Route = 4

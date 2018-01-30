@@ -4,24 +4,24 @@ Max Load = 4000
 Max Cost = 99999999999999
 
 SOLUTION DETAILS: 
-Total Cost = 384277.17
+Total Cost = 407590.77
 Routes Of the Solution = 3
-GAP = 12.69 %
+GAP = 14.07 %
 
 ROUTE 0:
-Cost = 171983.48
-Delivery Load = 3911
-Pick-Up Load = 3848
+Cost = 258491.24
+Delivery Load = 3813
+Pick-Up Load = 3810
 Customers in Route = 19
 
 ROUTE 1:
-Cost = 147657.5
-Delivery Load = 3785
-Pick-Up Load = 1380
-Customers in Route = 11
+Cost = 114076.87
+Delivery Load = 3833
+Pick-Up Load = 1418
+Customers in Route = 12
 
 ROUTE 2:
-Cost = 64636.19
-Delivery Load = 2144
+Cost = 35022.66
+Delivery Load = 2194
 Pick-Up Load = 0
-Customers in Route = 6
+Customers in Route = 5

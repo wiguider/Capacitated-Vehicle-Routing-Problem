@@ -136,18 +136,17 @@ def write_results_to_json():
         fd[fn] = []
 
     for fn in files:
-
         f = open(fn, "r")
         tt = fn.split("/")
         sol = open("RPA_Solutions/Detailed_Solution_" + tt[1] + ".txt")
         sol_lines = sol.readlines()
         lines = f.readlines()
         fd[tt[1]].append(
-                {
-                    "method": tt[2].split(".")[0],
-                    "perfect_cost": sol_lines[8].split(" = ")[1].replace("\r\n", ""),
-                    "our_cost": lines[6].split(" = ")[1].replace("\n", ""),
-                    "gap": lines[8].split(" = ")[1].replace("%\n", "%")}
+            {
+                "method": tt[2].split(".")[0],
+                "perfect_cost": sol_lines[8].split(" = ")[1].replace("\n", ""),
+                "our_cost": lines[6].split(" = ")[1].replace("\n", ""),
+                "gap": lines[8].split(" = ")[1].replace("%\n", "%")}
         )
     res = "{"
 
@@ -156,6 +155,7 @@ def write_results_to_json():
     res += "}"
 
     res = res.replace("'", "\"")
+    print res
     writer = FileWriter("res.json")
     writer.write(res)
 

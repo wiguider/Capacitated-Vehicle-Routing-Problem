@@ -4,54 +4,54 @@ Max Load = 1550
 Max Cost = 99999999999999
 
 SOLUTION DETAILS: 
-Total Cost = 303206.5
+Total Cost = 361262.9
 Routes Of the Solution = 8
-GAP = 31.89 %
+GAP = 5.71 %
 
 ROUTE 0:
-Cost = 31804.2
-Delivery Load = 452
-Pick-Up Load = 1301
-Customers in Route = 6
+Cost = 75458.42
+Delivery Load = 1093
+Pick-Up Load = 1433
+Customers in Route = 7
 
 ROUTE 1:
-Cost = 49418.84
-Delivery Load = 1309
-Pick-Up Load = 1239
-Customers in Route = 6
+Cost = 68728.58
+Delivery Load = 1450
+Pick-Up Load = 1107
+Customers in Route = 7
 
 ROUTE 2:
-Cost = 58976.17
-Delivery Load = 1494
+Cost = 45420.27
+Delivery Load = 1303
 Pick-Up Load = 0
 Customers in Route = 5
 
 ROUTE 3:
-Cost = 20264.69
-Delivery Load = 1160
-Pick-Up Load = 0
-Customers in Route = 4
-
-ROUTE 4:
-Cost = 35743.31
-Delivery Load = 1196
-Pick-Up Load = 0
-Customers in Route = 5
-
-ROUTE 5:
-Cost = 40293.89
+Cost = 60197.7
 Delivery Load = 1477
 Pick-Up Load = 0
 Customers in Route = 5
 
-ROUTE 6:
-Cost = 28165.39
-Delivery Load = 1442
+ROUTE 4:
+Cost = 33161.57
+Delivery Load = 1477
 Pick-Up Load = 0
 Customers in Route = 5
 
-ROUTE 7:
-Cost = 38540.01
-Delivery Load = 1519
+ROUTE 5:
+Cost = 26198.83
+Delivery Load = 959
 Pick-Up Load = 0
-Customers in Route = 5
+Customers in Route = 4
+
+ROUTE 6:
+Cost = 28814.26
+Delivery Load = 1484
+Pick-Up Load = 0
+Customers in Route = 4
+
+ROUTE 7:
+Cost = 23283.27
+Delivery Load = 806
+Pick-Up Load = 0
+Customers in Route = 4
