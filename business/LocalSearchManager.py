@@ -1,3 +1,4 @@
+import sys
 from copy import copy
 
 from RandomMap import RandomMap
@@ -6,20 +7,32 @@ from models.Route import Route
 
 
 class LocalSearchManager:
-    def __init__(self):
+    def __init__(self, iterations=10):
         self.random_map = None
         self.cost_map = {}
         self.file_name = ''
+        self.file_path = ''
         self.ref_cost = 0.0
+        assert isinstance(iterations, int)
+        self.iterations = iterations
 
     def get_random_routes(self, file_path):
-        rm = RandomMap(file_path)
-        rm.init_routes()
-        rm.populate_routes_linehauls()
-        rm.populate_routes_backhauls()
-        rm.calculate_cost()
-        self.file_name = rm.file_name
-        self.random_map = rm
+        try:
+            self.file_path = file_path
+            rm = RandomMap(file_path)
+            rm.init_routes()
+            print " > populate_routes_linehauls " + file_path
+            rm.populate_routes_linehauls()
+            print " > End populate_routes_linehauls " + file_path
+            print " > populate_routes_backhauls " + file_path
+            rm.populate_routes_backhauls()
+            print " > End populate_routes_backhauls " + file_path
+            rm.calculate_cost()
+            self.file_name = rm.file_name
+            self.random_map = rm
+
+        except Exception as e:
+            print e
 
     @staticmethod
     def exchange_elements_in_list(nodes, old_index, new_index):
@@ -29,193 +42,224 @@ class LocalSearchManager:
 
     def best_exchange(self):
         print ">> best_exchange"
-        self.cost_map = {}
-        rm_instance_ref = copy(self.random_map)
-        rm_instance = copy(self.random_map)
+        maps = {self.random_map.cost: self.random_map}
 
-        allNodes = []
-        allnodesStock = []
-        assert isinstance(rm_instance_ref, RandomMap)
-        for route in rm_instance_ref.get_routes:
-            for node in route.get_nodes:
-                assert isinstance(node, Node)
-                allNodes.append(node)
-                if node.get_type != "deposit":
-                    allnodesStock.append(node)
+        for x in range(0, self.iterations):
+            self.cost_map = {}
+            rm_instance_ref = copy(self.random_map)
 
-        allnodesr = copy(allNodes)
-        for s in allnodesStock:
-            assert isinstance(s, Node)
-            for i in range(0, len(allnodesr) - 1):
-                if allnodesr[i].get_index != 0:  # if the given node is not a deposit
-                    s_index = allnodesr.index(s)  # The position of the node s in the list of nodes with deposits
+            allNodes = []
+            allnodesStock = []
+            assert isinstance(rm_instance_ref, RandomMap)
+            for route in rm_instance_ref.get_routes:
+                for node in route.get_nodes:
+                    assert isinstance(node, Node)
+                    allNodes.append(node)
+                    if node.get_type != "deposit":
+                        allnodesStock.append(node)
 
-                    if allnodesr[s_index + 1].get_index != 0:  # if the next node is not a deposit
+            allnodesr = copy(allNodes)
+            for s in allnodesStock:
+                assert isinstance(s, Node)
+                for i in range(0, len(allnodesr) - 1):
+                    if allnodesr[i].get_index != 0:  # if the given node is not a deposit
+                        s_index = allnodesr.index(s)  # The position of the node s in the list of nodes with deposits
 
-                        allnodesr = self.exchange_elements_in_list(allnodesr, s_index, s_index + 1)
-                        # Build map from allnodesr (0, 1, 2, 3, 4, 0, 0, 5, 6, 7, 0) + compute cost
-                        self.build_map_from_list(allnodesr)
-                    else:  # if the next node is a deposit
-                        allnodesr = self.exchange_elements_in_list(allnodesr, s_index, s_index + 3)
-                        # Build map from allnodesr (0, 1, 2, 3, 4, 0, 0, 5, 6, 7, 0) + compute cost
-                        self.build_map_from_list(allnodesr)
-                    if s.__eq__(allnodesr[-2]):
-                        break
-                    allnodesr = copy(allNodes)
-        min_cost = min(self.cost_map.keys())
-        # print self.cost_map[min_cost]
-        # print 'Total cost: ', min_cost
-        # print 'GAP: ', self.calculate_gap(min_cost), '% '
-        # print 'Served clients: ', len(allnodesStock)
-        # print len(self.cost_map.keys())
+                        if allnodesr[s_index + 1].get_index != 0:  # if the next node is not a deposit
 
-        return self.cost_map[min_cost], min_cost, self.calculate_gap(min_cost), len(allnodesStock)
+                            allnodesr = self.exchange_elements_in_list(allnodesr, s_index, s_index + 1)
+                            # Build map from allnodesr (0, 1, 2, 3, 4, 0, 0, 5, 6, 7, 0) + compute cost
+                            self.build_map_from_list(allnodesr)
+                        else:  # if the next node is a deposit
+                            allnodesr = self.exchange_elements_in_list(allnodesr, s_index, s_index + 3)
+                            # Build map from allnodesr (0, 1, 2, 3, 4, 0, 0, 5, 6, 7, 0) + compute cost
+                            self.build_map_from_list(allnodesr)
+                        if s.__eq__(allnodesr[-2]):
+                            break
+                        allnodesr = copy(allNodes)
+            min_cost = min(self.cost_map.keys())
+            # print self.cost_map[min_cost]
+            print x, 'Total cost: ', min_cost
+            maps[min_cost] = self.cost_map[min_cost]
+            self.get_random_routes(self.file_path)
+            # print 'GAP: ', self.calculate_gap(min_cost), '% '
+            # print 'Served clients: ', len(allnodesStock)
+            # print len(self.cost_map.keys())
+        least_min_cost = min(maps.keys())
+        print 'Least min cost: ', least_min_cost
+        return maps[least_min_cost], least_min_cost, self.calculate_gap(least_min_cost), len(allnodesStock)
 
     def first_exchange(self):
-        print ">> first_exchange"
-        rm_instance_ref = copy(self.random_map)
-        rm_instance = copy(self.random_map)
-        allNodes = []
-        allnodesStock = []
-        self.cost_map = {}
-        assert isinstance(rm_instance_ref, RandomMap)
-        for route in rm_instance_ref.get_routes:
-            for node in route.get_nodes:
-                assert isinstance(node, Node)
-                allNodes.append(node)
-                if node.get_type != "deposit":
-                    allnodesStock.append(node)
-        self.ref_cost = rm_instance.cost
-        allnodesr = copy(allNodes)
-        for s in allnodesStock:
-            for i in range(0, len(allnodesr) - 1):
-                if allnodesr[i].get_index != 0:
-                    s_index = allnodesr.index(s)
+        print ">> first_exchange", sys.getrecursionlimit()
 
-                    if allnodesr[s_index + 1].get_index != 0:
+        maps = {self.random_map.cost: self.random_map}
 
-                        allnodesr = self.exchange_elements_in_list(allnodesr, s_index, s_index + 1)
-                        # Build map from allnodesr (0, 1, 2, 3, 4, 0, 0, 5, 6, 7, 0) + compute cost
-                        self.build_map_from_list(allnodesr)
-                    else:
-                        allnodesr = self.exchange_elements_in_list(allnodesr, s_index, s_index + 3)
-                        # Build map from allnodesr (0, 1, 2, 3, 4, 0, 0, 5, 6, 7, 0) + compute cost
-                        self.build_map_from_list(allnodesr)
-                    costs = self.cost_map.keys()
-                    if costs[-1] < rm_instance.cost:
-                        # print 'Total cost: ', costs[-1]
-                        # print 'GAP: ', self.calculate_gap(costs[-1]), '% '
-                        # print 'Served clients: ', len(allnodesStock)
-                        # print len(self.cost_map.keys())
-                        return self.cost_map[costs[-1]], costs[-1], self.calculate_gap(costs[-1]), len(allnodesStock)
+        for x in range(0, self.iterations):
+            rm_instance_ref = copy(self.random_map)
+            rm_instance = copy(self.random_map)
+            allNodes = []
+            allnodesStock = []
+            self.cost_map = {}
+            self.cost_map[self.random_map.cost] = self.random_map
+            assert isinstance(rm_instance_ref, RandomMap)
+            for route in rm_instance_ref.get_routes:
+                for node in route.get_nodes:
+                    assert isinstance(node, Node)
+                    allNodes.append(node)
+                    if node.get_type != "deposit":
+                        allnodesStock.append(node)
+            self.ref_cost = rm_instance.cost
+            allnodesr = copy(allNodes)
+            for s in allnodesStock:
+                for i in range(0, len(allnodesr) - 1):
+                    if allnodesr[i].get_index != 0:
+                        s_index = allnodesr.index(s)
 
-                    if s == allnodesr[-2]:
-                        break
-                    allnodesr = copy(allNodes)
+                        if allnodesr[s_index + 1].get_index != 0:
 
-        min_cost = min(self.cost_map.keys())
-        # print self.cost_map[min_cost]
-        # print 'Total cost: ', min_cost
-        # print 'GAP: ', self.calculate_gap(min_cost), '% '
-        # print 'Served clients: ', len(allnodesStock)
-        # print len(self.cost_map.keys())
+                            allnodesr = self.exchange_elements_in_list(allnodesr, s_index, s_index + 1)
+                            # Build map from allnodesr (0, 1, 2, 3, 4, 0, 0, 5, 6, 7, 0) + compute cost
+                            self.build_map_from_list(allnodesr)
+                        else:
+                            allnodesr = self.exchange_elements_in_list(allnodesr, s_index, s_index + 3)
+                            # Build map from allnodesr (0, 1, 2, 3, 4, 0, 0, 5, 6, 7, 0) + compute cost
+                            self.build_map_from_list(allnodesr)
+                        costs = self.cost_map.keys()
+                        if costs[-1] < maps.keys()[-1]:
+                            # print 'Total cost: ', costs[-1]
+                            # print 'GAP: ', self.calculate_gap(costs[-1]), '% '
+                            # print 'Served clients: ', len(allnodesStock)
+                            # print len(self.cost_map.keys())
+                            maps[costs[-1]] = self.cost_map[costs[-1]]
+                        else:
+                            pass
 
-        return self.cost_map[min_cost], min_cost, self.calculate_gap(min_cost), len(allnodesStock)
+                        if s == allnodesr[-2]:
+                            break
+                        allnodesr = copy(allNodes)
+
+            min_cost = min(self.cost_map.keys())
+            # print self.cost_map[min_cost]
+            maps[min_cost] = self.cost_map[min_cost]
+            print x, 'Total cost: ', min_cost
+
+            # print 'GAP: ', self.calculate_gap(min_cost), '% '
+            # print 'Served clients: ', len(allnodesStock)
+            # print len(self.cost_map.keys())
+            self.get_random_routes(self.file_path)
+
+        least_min_cost = min(maps.keys())
+        print 'Least min cost: ', least_min_cost
+        self.random_map = maps[least_min_cost]
+        return maps[least_min_cost], least_min_cost, self.calculate_gap(least_min_cost), len(allnodesStock)
 
     def best_relocate(self):
         print ">> best_relocate"
+        maps = {self.random_map.cost: self.random_map}
+        for x in range(0, self.iterations):
 
-        rm_instance_ref = copy(self.random_map)
-        rm_instance = copy(self.random_map)
-        self.cost_map = {}
-        allNodes = []
-        allnodesStock = []
-        assert isinstance(rm_instance_ref, RandomMap)
-        for route in rm_instance_ref.get_routes:
-            for node in route.get_nodes:
-                assert isinstance(node, Node)
-                allNodes.append(node)
-                if node.get_type != "deposit":
-                    allnodesStock.append(node)
+            rm_instance_ref = copy(self.random_map)
+            self.cost_map = {}
+            allNodes = []
+            allnodesStock = []
+            assert isinstance(rm_instance_ref, RandomMap)
+            for route in rm_instance_ref.get_routes:
+                for node in route.get_nodes:
+                    assert isinstance(node, Node)
+                    allNodes.append(node)
+                    if node.get_type != "deposit":
+                        allnodesStock.append(node)
 
-        allnodesr = copy(allNodes)
-        for s in allnodesStock:
-            for i in range(0, len(allnodesr) - 1):
-                if allnodesr[i].get_index != 0:
-                    s_index = allnodesr.index(s)
+            allnodesr = copy(allNodes)
+            for s in allnodesStock:
+                for i in range(0, len(allnodesr) - 1):
+                    if allnodesr[i].get_index != 0:
+                        s_index = allnodesr.index(s)
 
-                    if allnodesr[s_index + 1].get_index != 0:
+                        if allnodesr[s_index + 1].get_index != 0:
 
-                        allnodesr = self.relocate_element_in_list(allnodesr, s_index, s_index + 1)
-                        # Build map from allnodesr (0, 1, 2, 3, 4, 0, 0, 5, 6, 7, 0) + compute cost
-                        self.build_map_from_list(allnodesr)
-                    else:
-                        allnodesr = self.relocate_element_in_list(allnodesr, s_index, s_index + 2)
-                        # Build map from allnodesr (0, 1, 2, 3, 4, 0, 0, 5, 6, 7, 0) + compute cost
-                        self.build_map_from_list(allnodesr)
-                    if s == allnodesr[-2]:
-                        break
+                            allnodesr = self.relocate_element_in_list(allnodesr, s_index, s_index + 1)
+                            # Build map from allnodesr (0, 1, 2, 3, 4, 0, 0, 5, 6, 7, 0) + compute cost
+                            self.build_map_from_list(allnodesr)
+                        else:
+                            allnodesr = self.relocate_element_in_list(allnodesr, s_index, s_index + 2)
+                            # Build map from allnodesr (0, 1, 2, 3, 4, 0, 0, 5, 6, 7, 0) + compute cost
+                            self.build_map_from_list(allnodesr)
+                        if s == allnodesr[-2]:
+                            break
 
-                # allnodesr = copy(allNodes)
-        min_cost = min(self.cost_map.keys())
-        # print self.cost_map[min_cost]
-        # print 'Total cost: ', min_cost
-        # print 'GAP: ', self.calculate_gap(min_cost), '% '
-        # print 'Served clients: ', len(allnodesStock)
-        # print len(self.cost_map.keys())
-
-        return self.cost_map[min_cost], min_cost, self.calculate_gap(min_cost), len(allnodesStock)
+                    # allnodesr = copy(allNodes)
+            min_cost = min(self.cost_map.keys())
+            # print self.cost_map[min_cost]
+            maps[min_cost] = self.cost_map[min_cost]
+            print x, 'Total cost: ', min_cost
+            # print 'GAP: ', self.calculate_gap(min_cost), '% '
+            # print 'Served clients: ', len(allnodesStock)
+            # print len(self.cost_map.keys())
+            self.get_random_routes(self.file_path)
+        least_min_cost = min(maps.keys())
+        print 'Least min cost: ', least_min_cost
+        self.random_map = maps[least_min_cost]
+        return maps[least_min_cost], least_min_cost, self.calculate_gap(least_min_cost), len(allnodesStock)
 
     def first_relocate(self):
-        print ">> first_relocate"
+        print ">> first_relocate", sys.getrecursionlimit()
+        maps = {self.random_map.cost: self.random_map}
 
-        rm_instance_ref = copy(self.random_map)
-        rm_instance = copy(self.random_map)
-        self.cost_map = {}
-        allNodes = []
-        allnodesStock = []
-        assert isinstance(rm_instance_ref, RandomMap)
-        for route in rm_instance_ref.get_routes:
-            for node in route.get_nodes:
-                assert isinstance(node, Node)
-                allNodes.append(node)
-                if node.get_type != "deposit":
-                    allnodesStock.append(node)
+        for x in range(0, self.iterations):
+            rm_instance_ref = copy(self.random_map)
+            self.cost_map = {}
+            allNodes = []
+            allnodesStock = []
+            assert isinstance(rm_instance_ref, RandomMap)
+            for route in rm_instance_ref.get_routes:
+                for node in route.get_nodes:
+                    assert isinstance(node, Node)
+                    allNodes.append(node)
+                    if node.get_type != "deposit":
+                        allnodesStock.append(node)
 
-        allnodesr = copy(allNodes)
-        for s in allnodesStock:
-            for i in range(0, len(allnodesr) - 1):
-                if allnodesr[i].get_index != 0:
-                    s_index = allnodesr.index(s)
+            allnodesr = copy(allNodes)
+            for s in allnodesStock:
+                for i in range(0, len(allnodesr) - 1):
+                    if allnodesr[i].get_index != 0:
+                        s_index = allnodesr.index(s)
 
-                    if allnodesr[s_index + 1].get_index != 0:
+                        if allnodesr[s_index + 1].get_index != 0:
 
-                        allnodesr = self.relocate_element_in_list(allnodesr, s_index, s_index + 1)
-                        # Build map from allnodesr (0, 1, 2, 3, 4, 0, 0, 5, 6, 7, 0) + compute cost
-                        self.build_map_from_list(allnodesr)
-                    else:
-                        allnodesr = self.relocate_element_in_list(allnodesr, s_index, s_index + 2)
-                        # Build map from allnodesr (0, 1, 2, 3, 4, 0, 0, 5, 6, 7, 0) + compute cost
-                        self.build_map_from_list(allnodesr)
-                    costs = self.cost_map.keys()
-                    if costs[-1] < rm_instance.cost:
-                        # print 'Total cost: ', costs[-1]
-                        # print 'GAP: ', self.calculate_gap(costs[-1]), '% '
-                        # print 'Served clients: ', len(allnodesStock)
-                        # print len(self.cost_map.keys())
-                        return self.cost_map[costs[-1]], costs[-1], self.calculate_gap(costs[-1]), len(allnodesStock)
-                    allnodesr = copy(allNodes)
-                    if s == allnodesr[-2]:
-                        break
-                # allnodesr = copy(allNodes)
-        min_cost = min(self.cost_map.keys())
-        # print self.cost_map[min_cost]
-        # print 'Total cost: ', min_cost
+                            allnodesr = self.relocate_element_in_list(allnodesr, s_index, s_index + 1)
+                            # Build map from allnodesr (0, 1, 2, 3, 4, 0, 0, 5, 6, 7, 0) + compute cost
+                            self.build_map_from_list(allnodesr)
+                        else:
+                            allnodesr = self.relocate_element_in_list(allnodesr, s_index, s_index + 2)
+                            # Build map from allnodesr (0, 1, 2, 3, 4, 0, 0, 5, 6, 7, 0) + compute cost
+                            self.build_map_from_list(allnodesr)
+                        costs = self.cost_map.keys()
+                        if costs[-1] < maps.keys()[-1]:
+                            # print 'Total cost: ', costs[-1]
+                            # print 'GAP: ', self.calculate_gap(costs[-1]), '% '
+                            # print 'Served clients: ', len(allnodesStock)
+                            # print len(self.cost_map.keys())
+                            maps[costs[-1]] = self.cost_map[costs[-1]]
+                        else:
+                            pass
+                        allnodesr = copy(allNodes)
+                        if s == allnodesr[-2]:
+                            break
+                    # allnodesr = copy(allNodes)
+            min_cost = min(self.cost_map.keys())
+            # print self.cost_map[min_cost]
+            maps[min_cost] = self.cost_map[min_cost]
+            print x, 'Total cost: ', min_cost
+            self.get_random_routes(self.file_path)
+
         # print 'GAP: ', self.calculate_gap(min_cost), '% '
         # print 'Served clients: ', len(allnodesStock)
         # print len(self.cost_map.keys())
-
-        return self.cost_map[min_cost], min_cost, self.calculate_gap(min_cost), len(allnodesStock)
+        least_min_cost = min(maps.keys())
+        print 'Least min cost: ', least_min_cost
+        self.random_map = maps[least_min_cost]
+        return maps[least_min_cost], least_min_cost, self.calculate_gap(least_min_cost), len(allnodesStock)
 
     @staticmethod
     def relocate_element_in_list(lista, old_index, new_index):
@@ -285,4 +329,4 @@ class LocalSearchManager:
         ref_cost = self.get_ref_cost()
         assert isinstance(ref_cost, float)
         assert isinstance(my_cost, float)
-        return round((float(my_cost - ref_cost) / ref_cost) * 100, 2)
+        return round(abs(float(my_cost - ref_cost) / ref_cost) * 100, 2)

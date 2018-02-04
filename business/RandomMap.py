@@ -31,39 +31,57 @@ class RandomMap:
                         self._instance.linehaul_ids.pop(self._instance.linehaul_ids.index(x))
                         self._routes.append(route)
                         break
+                    else:
+                        pass
+                else:
+                    pass
+            # route.add_deposit_at_last()
 
     def reset_routes_capacities(self):
         for route in self._routes:
             route.max_backhaul_capacity = self._vehicle_capacity
 
     def populate_routes_linehauls(self):
-        for route in self._routes:
-            for x in self._instance.rnd_nodes_ids:
-                node = self._instance.get_node_by_index(x)
-                if len(self._instance.linehaul_ids) > 0:
-                    if node.get_type == 'linehaul' and node.get_index in self._instance.linehaul_ids and node.get_capacity <= route.max_linehaul_capacity:
-                        route.add_node(node)
-                        self._instance.linehaul_ids.pop(self._instance.linehaul_ids.index(x))
+        while len(self._instance.linehaul_ids) > 0:
+            i = 0
+            for route in self._routes:
+                i += 1
 
-        if len(self._instance.linehaul_ids) > 0:
-            self.populate_routes_linehauls()
+                for x in self._instance.rnd_nodes_ids:
+                    node = self._instance.get_node_by_index(x)
+                    if len(self._instance.linehaul_ids) > 0:
+                        if node.get_type == 'linehaul' and node.get_index in self._instance.linehaul_ids and node.get_capacity <= route.max_linehaul_capacity:
+                            route.add_node(node)
+                            self._instance.linehaul_ids.pop(self._instance.linehaul_ids.index(x))
+                        else:
+                            if i == len(self._routes) - 1:
+                                self.init_routes()
+                                self.populate_routes_linehauls()
+                    else:
+                        break
 
     def populate_routes_backhauls(self):
-        for route in self._routes:
-            for x in self._instance.rnd_nodes_ids:
-                node = self._instance.get_node_by_index(x)
-                if len(self._instance.backhaul_ids) > 0:
-                    if node.get_type == 'backhaul' and node.get_index in self._instance.backhaul_ids and node.get_capacity <= route.max_backhaul_capacity:
-                        route.add_node(node)
-                        self._instance.backhaul_ids.pop(self._instance.backhaul_ids.index(x))
-        if len(self._instance.backhaul_ids) > 0:
-            self.populate_routes_backhauls()
+
+        while len(self._instance.backhaul_ids) > 0:
+            for route in self._routes:
+                for x in self._instance.rnd_nodes_ids:
+                    node = self._instance.get_node_by_index(x)
+                    if len(self._instance.backhaul_ids) > 0:
+                        if node.get_type == 'backhaul' and node.get_index in self._instance.backhaul_ids and node.get_capacity <= route.max_backhaul_capacity:
+                            route.add_node(node)
+                            self._instance.backhaul_ids.pop(self._instance.backhaul_ids.index(x))
+                        else:
+                            pass
+                    else:
+                        pass
+
         for route in self._routes:
             route.add_deposit_at_last()
 
     def calculate_cost(self):
         for route in self._routes:
             self.cost += route.get_cost
+        # print self.cost, "--"
 
     @property
     def get_routes(self):

@@ -1,3 +1,7 @@
+import sys
+
+
+
 class InstanceReader:
     def __init__(self, path):
         try:

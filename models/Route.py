@@ -1,7 +1,9 @@
 import re
+import sys
 
 from models.Node import Node
 from utils import DistanceCalculator
+
 
 
 class Route:
@@ -151,7 +153,7 @@ class Route:
         :return:
         """
         cost = 0
-        for i in range(1, len(self._nodes) - 1):
+        for i in range(0, len(self._nodes) - 1):
             last_node = self._nodes[i - 1]
             assert isinstance(last_node, Node)
             node = self._nodes[i]

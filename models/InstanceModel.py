@@ -1,4 +1,6 @@
+import sys
 from random import shuffle
+
 
 from models.Node import Node
 from utils.InstanceReader import InstanceReader
@@ -41,6 +43,7 @@ class InstanceModel:
             i = i + 1
 
     def get_node_by_index(self, idx):
+
         for x in self.nodes_list:
             if x.get_index == int(idx):
                 return x
