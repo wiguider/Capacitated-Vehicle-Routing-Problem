@@ -15,6 +15,25 @@ sys.setrecursionlimit(10000)
 
 rnd_maps_list = []
 
+instances_map = [['Instances/A1.txt', 'Instances/A2.txt', 'Instances/A3.txt', 'Instances/A4.txt'],
+                 ['Instances/B1.txt', 'Instances/B2.txt', 'Instances/B3.txt'],
+                 ['Instances/C1.txt', 'Instances/C2.txt', 'Instances/C3.txt', 'Instances/C4.txt'],
+                 ['Instances/D1.txt', 'Instances/D2.txt', 'Instances/D3.txt', 'Instances/D4.txt'],
+                 ['Instances/E1.txt', 'Instances/E2.txt', 'Instances/E3.txt'],
+                 ['Instances/F1.txt', 'Instances/F2.txt', 'Instances/F3.txt', 'Instances/F4.txt'],
+                 ['Instances/G1.txt', 'Instances/G2.txt', 'Instances/G3.txt', 'Instances/G4.txt', 'Instances/G5.txt', 'Instances/G6.txt'],
+                 ['Instances/H1.txt', 'Instances/H2.txt', 'Instances/H3.txt', 'Instances/H4.txt', 'Instances/H5.txt', 'Instances/H6.txt'],
+                 ['Instances/I1.txt', 'Instances/I2.txt', 'Instances/I3.txt', 'Instances/I4.txt', 'Instances/I5.txt'],
+                 ['Instances/J1.txt', 'Instances/J2.txt', 'Instances/J3.txt', 'Instances/J4.txt'],
+                 ['Instances/K1.txt', 'Instances/K2.txt', 'Instances/K3.txt', 'Instances/K4.txt'],
+                 ['Instances/L1.txt', 'Instances/L2.txt', 'Instances/L3.txt', 'Instances/L4.txt', 'Instances/L5.txt'],
+                 ['Instances/M1.txt', 'Instances/M2.txt', 'Instances/M3.txt', 'Instances/M4.txt'],
+                 ['Instances/N1.txt', 'Instances/N2.txt', 'Instances/N3.txt', 'Instances/N4.txt', 'Instances/N5.txt', 'Instances/N6.txt']]
+first_relocate = {}
+best_relocate = {}
+first_exchange = {}
+best_exchange = {}
+
 
 def ensure_dir(file_path):
     directory = os.path.dirname(file_path)
@@ -32,47 +51,28 @@ def get_random_routes(file_path):
 
 
 def get_a1_rm():
-    path = "Instances/A1.txt"
+    path = "Instances/G1.txt"
     local_search(path)
 
 
 def get_all_rm():
-    instances_map = [#['Instances/A1.txt', 'Instances/A2.txt', 'Instances/A3.txt', 'Instances/A4.txt'],
-                     #['Instances/B1.txt', 'Instances/B2.txt', 'Instances/B3.txt'],
-                     ['Instances/C1.txt', 'Instances/C2.txt', 'Instances/C3.txt', 'Instances/C4.txt'],
-                     ['Instances/D1.txt', 'Instances/D2.txt', 'Instances/D3.txt', 'Instances/D4.txt'],
-                     ['Instances/E1.txt', 'Instances/E2.txt', 'Instances/E3.txt'],
-                     ['Instances/F1.txt', 'Instances/F2.txt', 'Instances/F3.txt', 'Instances/F4.txt'],
-                     ['Instances/G1.txt', 'Instances/G2.txt', 'Instances/G3.txt', 'Instances/G4.txt', 'Instances/G5.txt', 'Instances/G6.txt'],
-                     ['Instances/H1.txt', 'Instances/H2.txt', 'Instances/H3.txt', 'Instances/H4.txt', 'Instances/H5.txt', 'Instances/H6.txt'],
-                     ['Instances/I1.txt', 'Instances/I2.txt', 'Instances/I3.txt', 'Instances/I4.txt', 'Instances/I5.txt'],
-                     ['Instances/J1.txt', 'Instances/J2.txt', 'Instances/J3.txt', 'Instances/J4.txt'],
-                     ['Instances/K1.txt', 'Instances/K2.txt', 'Instances/K3.txt', 'Instances/K4.txt'],
-                     ['Instances/L1.txt', 'Instances/L2.txt', 'Instances/L3.txt', 'Instances/L4.txt', 'Instances/L5.txt'],
-                     ['Instances/M1.txt', 'Instances/M2.txt', 'Instances/M3.txt', 'Instances/M4.txt'],
-                     ['Instances/N1.txt', 'Instances/N2.txt', 'Instances/N3.txt', 'Instances/N4.txt', 'Instances/N5.txt', 'Instances/N6.txt']]
-    for instances in instances_map:
-        map(lambda instance: local_search(instance), instances)
+    runInParallel(run_instances(0), run_instances(1), run_instances(2), run_instances(3), run_instances(4), run_instances(5), run_instances(6), run_instances(7), run_instances(7))
+
+
+def run_instances(index):
+    instances = instances_map[index]
+    map(lambda instance: local_search(instance), instances)
 
 
 def build_payload(map, cost, gap, num_clients):
     assert isinstance(map, RandomMap)
-    payload = {'map': None,
-               'cost': 0.0,
-               'gap': 0.0,
-               'maxload': 0.0,
-               'num_clients': 0.0}
-    payload['map'] = map
-    payload['cost'] = cost
-    payload['maxload'] = map.get_routes[0].get_nodes[0].get_capacity
-    payload['gap'] = float(gap)
-    payload['num_clients'] = num_clients
+    payload = {'map': map, 'cost': cost, 'gap': float(gap), 'maxload': map.get_routes[0].get_nodes[0].get_capacity, 'num_clients': num_clients}
     return payload
 
 
 def local_search(path):
     start_time = time()
-    ls = LocalSearchManager(iterations=20)
+    ls = LocalSearchManager(iterations=60)
     ls.get_random_routes(path)
 
     print '>> ', ls.file_name
@@ -230,10 +230,10 @@ def runInParallel(*fns):
 
 
 def main():
-    # get_a1_rm()
-    get_all_rm()
+    get_a1_rm()
+    # get_all_rm()
     # local_search()
-    write_results_to_json()
+    # write_results_to_json()
 
 
 if __name__ == '__main__':

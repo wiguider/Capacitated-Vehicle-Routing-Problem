@@ -79,12 +79,13 @@ class LocalSearchManager:
                         allnodesr = copy(allNodes)
             min_cost = min(self.cost_map.keys())
             # print self.cost_map[min_cost]
-            print x, 'Total cost: ', min_cost
-            maps[min_cost] = self.cost_map[min_cost]
-            self.get_random_routes(self.file_path)
-            # print 'GAP: ', self.calculate_gap(min_cost), '% '
-            # print 'Served clients: ', len(allnodesStock)
-            # print len(self.cost_map.keys())
+            if min_cost < maps.keys()[-1]:
+                maps[min_cost] = self.cost_map[min_cost]
+                # print x, 'Total cost: ', min_cost
+                print x, 'GAP: ', self.calculate_gap(min_cost), '% '
+                # print 'Served clients: ', len(allnodesStock)
+                # print len(self.cost_map.keys())
+
         least_min_cost = min(maps.keys())
         print 'Least min cost: ', least_min_cost
         return maps[least_min_cost], least_min_cost, self.calculate_gap(least_min_cost), len(allnodesStock)
@@ -99,8 +100,7 @@ class LocalSearchManager:
             rm_instance = copy(self.random_map)
             allNodes = []
             allnodesStock = []
-            self.cost_map = {}
-            self.cost_map[self.random_map.cost] = self.random_map
+            self.cost_map = {self.random_map.cost: self.random_map}
             assert isinstance(rm_instance_ref, RandomMap)
             for route in rm_instance_ref.get_routes:
                 for node in route.get_nodes:
@@ -127,7 +127,7 @@ class LocalSearchManager:
                         costs = self.cost_map.keys()
                         if costs[-1] < maps.keys()[-1]:
                             # print 'Total cost: ', costs[-1]
-                            # print 'GAP: ', self.calculate_gap(costs[-1]), '% '
+                            print x, 'GAP: ', self.calculate_gap(costs[-1]), '% '
                             # print 'Served clients: ', len(allnodesStock)
                             # print len(self.cost_map.keys())
                             maps[costs[-1]] = self.cost_map[costs[-1]]
@@ -140,13 +140,13 @@ class LocalSearchManager:
 
             min_cost = min(self.cost_map.keys())
             # print self.cost_map[min_cost]
-            maps[min_cost] = self.cost_map[min_cost]
-            print x, 'Total cost: ', min_cost
-
-            # print 'GAP: ', self.calculate_gap(min_cost), '% '
-            # print 'Served clients: ', len(allnodesStock)
-            # print len(self.cost_map.keys())
-            self.get_random_routes(self.file_path)
+            if min_cost < maps.keys()[-1]:
+                maps[min_cost] = self.cost_map[min_cost]
+                self.random_map = maps[min_cost]
+                print x, 'Total cost: ', min_cost
+                print x, 'GAP: ', self.calculate_gap(min_cost), '% '
+            else:
+                pass
 
         least_min_cost = min(maps.keys())
         print 'Least min cost: ', least_min_cost
@@ -191,12 +191,14 @@ class LocalSearchManager:
                     # allnodesr = copy(allNodes)
             min_cost = min(self.cost_map.keys())
             # print self.cost_map[min_cost]
-            maps[min_cost] = self.cost_map[min_cost]
-            print x, 'Total cost: ', min_cost
-            # print 'GAP: ', self.calculate_gap(min_cost), '% '
-            # print 'Served clients: ', len(allnodesStock)
-            # print len(self.cost_map.keys())
-            self.get_random_routes(self.file_path)
+            if min_cost < maps.keys()[-1]:
+                maps[min_cost] = self.cost_map[min_cost]
+                self.random_map = maps[min_cost]
+                print x, 'Total cost: ', min_cost
+                print x, 'GAP: ', self.calculate_gap(min_cost), '% '
+            else:
+                pass
+
         least_min_cost = min(maps.keys())
         print 'Least min cost: ', least_min_cost
         self.random_map = maps[least_min_cost]
@@ -235,12 +237,14 @@ class LocalSearchManager:
                             # Build map from allnodesr (0, 1, 2, 3, 4, 0, 0, 5, 6, 7, 0) + compute cost
                             self.build_map_from_list(allnodesr)
                         costs = self.cost_map.keys()
+                        # print costs[-1] - maps.keys()[-1]
                         if costs[-1] < maps.keys()[-1]:
                             # print 'Total cost: ', costs[-1]
-                            # print 'GAP: ', self.calculate_gap(costs[-1]), '% '
+                            print x, 'GAP: ', self.calculate_gap(costs[-1]), '% '
                             # print 'Served clients: ', len(allnodesStock)
                             # print len(self.cost_map.keys())
                             maps[costs[-1]] = self.cost_map[costs[-1]]
+
                         else:
                             pass
                         allnodesr = copy(allNodes)
@@ -248,14 +252,18 @@ class LocalSearchManager:
                             break
                     # allnodesr = copy(allNodes)
             min_cost = min(self.cost_map.keys())
-            # print self.cost_map[min_cost]
-            maps[min_cost] = self.cost_map[min_cost]
-            print x, 'Total cost: ', min_cost
-            self.get_random_routes(self.file_path)
 
-        # print 'GAP: ', self.calculate_gap(min_cost), '% '
-        # print 'Served clients: ', len(allnodesStock)
-        # print len(self.cost_map.keys())
+            # print self.cost_map[min_cost]
+            if min_cost < maps.keys()[-1]:
+                maps[min_cost] = self.cost_map[min_cost]
+                self.random_map = maps[min_cost]
+                print x, 'Total cost: ', min_cost
+                print x, 'GAP: ', self.calculate_gap(min_cost), '% '
+                # print 'Served clients: ', len(allnodesStock)
+                # print len(self.cost_map.keys())
+            else:
+                pass
+
         least_min_cost = min(maps.keys())
         print 'Least min cost: ', least_min_cost
         self.random_map = maps[least_min_cost]

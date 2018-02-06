@@ -12,3 +12,11 @@ and may not be split, the vehicles are identical and are based at a single centr
 The CVRP has been extensively studied since the early sixties and in the last years, many new heuristic and exact approaches were presented. The largest problems which can be consistently solved by the most effective exact algorithms proposed so far contain about 50 customers, whereas larger instances may be solved only in particular cases. So instances with hundreds of customers, as those arising in practical applications, may only be tackled with heuristic methods.
 
 The CVRP extends the well-known Traveling Salesman Problem (TSP), calling for the determination of the circuit with associated minimum cost, visiting exactly once a given set of points. Therefore, many exact approaches for the CVRP were inherited from the huge and successful work done for the exact solution of the TSP.
+
+##How to run the project:
+
+To get the project up and running please execute the following command:
+
+    '/bin/sh /Path/to/the/project/cvrpb/job.sh'
+
+You can find the resulting files are generated under 'Results' directory and they will overwrite the old ones.
